@@ -44,7 +44,7 @@ const SideBar = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="w-full p-2 flex items-center gap-4 hover:cursor-pointer hover:bg-slate-800 rounded-lg dark:text-white"
+              className="w-full p-2 flex items-center gap-4 hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white"
             >
               {item.icon} <span>{item.name}</span>
             </div>
