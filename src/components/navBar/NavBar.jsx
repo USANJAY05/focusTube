@@ -5,7 +5,7 @@ import RightSection from './RightSection'
 
 const NavBar = () => {
   return (
-    <header className='p-3 flex items-center justify-between dark:bg-black dark:text-white'>
+    <header className='px-5 py-3 flex items-center justify-between dark:bg-black dark:text-white'>
         <LeftBtn />
         <Search />
         <RightSection />

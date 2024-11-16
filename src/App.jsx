@@ -6,7 +6,7 @@ import NavBar from "./components/navBar/NavBar";
 
 export default function App() {
   return (
-    <div className="text-lg">
+    <div className="text-lg h-[100vh] flex flex-col">
       <BrowserRouter>
         <NavBar />
         <Routes>
