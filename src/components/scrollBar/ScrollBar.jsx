@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setScrollActive } from '../../redux/slice/scrollBarActive-slice';
 
 const ScrollBar = () => {
   const items = [
@@ -8,7 +10,8 @@ const ScrollBar = () => {
     'workout', 'android', 'tesla car', 'space x', 'tech innovation'
   ];
 
-  const [active, setActive] =useState('All')
+  const active = useSelector((state) => state.scrollBarActive.value)
+  const dispatch = useDispatch()
 
 
   return (
@@ -17,7 +20,7 @@ const ScrollBar = () => {
         {items.map((item, id) => (
           <li 
             className={`px-2 py-1 w-auto text-sm font-semibold rounded-lg dark:hover:bg-gray-700 hover:bg-gray-400  dark:bg-slate-800 bg-gray-100 dark:text-white hover:cursor-pointer scrollbar-none ${active == item?'dark:bg-gray-700 bg-gray-400':''}`}
-            onClick={() => setActive(item)}
+            onClick={() => dispatch(setScrollActive(item))}
             key={id}
           >
             {item}
