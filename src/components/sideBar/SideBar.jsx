@@ -12,6 +12,8 @@ import { ImFire } from "react-icons/im";
 import { IoMusicalNotesOutline } from "react-icons/io5";
 import { MdOutlineMovie } from "react-icons/md";
 import { HiOutlineSignal } from "react-icons/hi2";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSideActive } from '../../redux/slice/sideBarActive-slice';
 
 const SideBar = () => {
 
@@ -36,7 +38,8 @@ const SideBar = () => {
     ]
   };
 
-  const [active, setActive] =useState('Home')
+  const active = useSelector((state) => state.sideBarActive.value)
+  const dispatch = useDispatch()
 
   return (
     <div className='w-60 p-4 h-full dark:bg-black overflow-auto'>
@@ -47,7 +50,7 @@ const SideBar = () => {
             <div
               key={index}
               className={`w-full p-2 flex items-center gap-4 hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white ${active == item.name?'bg-slate-200 dark:bg-slate-800':''}`}
-              onClick={() => setActive(item.name)}
+              onClick={() => dispatch(setSideActive(item.name))}
             >
               {item.icon} <span>{item.name}</span>
             </div>
