@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
   const toggle = useSelector((state) => state.toggle.value)
-  console.log(toggle)
+  // console.log(toggle)
   return (
     <div className='flex w-full h-full overflow-auto'>
       <div>

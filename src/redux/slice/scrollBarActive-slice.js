@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const scrollBarActiveSlice = createSlice({
     name: 'scrollBarActive',
     initialState: {
-        value: 'All'
+        value: 1
     },
     reducers: {
         setScrollActive: (state, action) => {
