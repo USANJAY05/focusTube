@@ -2,7 +2,7 @@ import React from 'react';
 
 const ScrollBar = () => {
   const items = [
-    'games', 'Trending', 'Movies', 'About Linux', 'Ethical Hacking', 
+    'All', 'games', 'Trending', 'Movies', 'About Linux', 'Ethical Hacking', 
     'Movie Review', 'Tamil Culture', 'Indian Politics', 'Best Smartphone', 
     'Apple Products', 'Gaming Channel', 'Tech Channel', 'Home Workout', 'Lifestyle',
     'workout', 'android', 'tesla car', 'space x', 'tech innovation'
