@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { IoMdHome } from "react-icons/io";
 import { MdOutlineSubscriptions } from "react-icons/md";
@@ -36,6 +36,8 @@ const SideBar = () => {
     ]
   };
 
+  const [active, setActive] =useState('Home')
+
   return (
     <div className='w-60 p-4 h-full dark:bg-black overflow-auto'>
       {/* Render each section of the sidebar */}
@@ -44,7 +46,8 @@ const SideBar = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="w-full p-2 flex items-center gap-4 hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white"
+              className={`w-full p-2 flex items-center gap-4 hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white ${active == item.name?'bg-slate-200 dark:bg-slate-800':''}`}
+              onClick={() => setActive(item.name)}
             >
               {item.icon} <span>{item.name}</span>
             </div>
