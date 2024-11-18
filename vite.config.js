@@ -13,9 +13,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'My Vite App', // The name of your app
-        short_name: 'ViteApp',
-        description: 'My Vite PWA application',
+        name: 'FocusTube', // The name of your app
+        short_name: 'FocusTube',
+        description: 'FocusTube PWA application',
         theme_color: '#ffffff',
         icons: [
           {
