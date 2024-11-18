@@ -52,7 +52,7 @@ const Video = () => {
         {/* Video Embed */}
         <div>
         <iframe 
-          className="w-full h-[100vh-10px] rounded-lg"
+          className="w-full h-[calc(100vh-400px)] xl:h-[calc(100vh-300px)] rounded-lg"
           src={`https://www.youtube.com/embed/${id}?autoplay=1`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
