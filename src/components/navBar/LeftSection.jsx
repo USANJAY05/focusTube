@@ -12,7 +12,7 @@ const LeftBtn = () => {
     <div>
         <div className='flex gap-2 items-center'>
             <IoReorderThreeOutline 
-              className='text-3xl p-1 dark:hover:bg-gray-700 hover:bg-gray-200 box-content rounded-3xl hover:cursor-pointer' 
+              className='dark:bg-black outline-none bg-white text-3xl p-1 dark:hover:bg-gray-700 hover:bg-gray-200 box-content rounded-3xl hover:cursor-pointer' 
               tabIndex={1}
               aria-label='toggle-button'
               onClick={() => dispatch(toggle())}

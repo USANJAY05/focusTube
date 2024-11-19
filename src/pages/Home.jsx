@@ -13,7 +13,7 @@ const Home = () => {
         {toggle&&
         <SideBar />}
       </div>
-      <div className='flex flex-col h-full overflow-x-auto '>
+      <div className='flex flex-col h-full overflow-auto '>
         <ScrollBar />
         <Right />
       </div>

@@ -46,13 +46,13 @@ const Video = () => {
 
   const { id } = useParams();  // Correct destructuring
   return (
-    <div className='flex flex-wrap p-5 gap-5 dark:bg-black overflow-auto'>
+    <div className='flex flex-wrap sm:p-5 xs-p-5 gap-5 dark:bg-black overflow-auto'>
       {/* Main video section */}
       <div className='xl:w-[75%] lg:w-[75%] md:w-full flex flex-col dark:text-white gap-2'>
         {/* Video Embed */}
         <div>
         <iframe 
-          className="w-full h-[calc(100vh-400px)] xl:h-[calc(100vh-300px)] rounded-lg"
+          className="w-full sm:h-[calc(100vh-400px)] h-[300px] xl:h-[calc(100vh-300px)] rounded-lg"
           src={`https://www.youtube.com/embed/${id}?autoplay=1`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
@@ -144,6 +144,7 @@ const Video = () => {
         {/* Thumbnails */}
         <div className='w-full flex md:flex-row md:flex-wrap flex-col gap-4'>
         {items.map((item) => (
+          <div className='w-full'>
           <Thumnail
             key={item.id}
             id={item.id}
@@ -154,6 +155,7 @@ const Video = () => {
             date={item.snippet.publishedAt}
             views={item.statistics.viewCount} // Access statistics from the correct field
           />
+          </div>
         ))}
         </div>
       </div>

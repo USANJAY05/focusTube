@@ -39,18 +39,20 @@ const Right = () => {
   }, [active]);
 
   return (
-    <div className='flex flex-wrap w-full h-full dark:bg-black overflow-auto'>
+    <div className='flex flex-wrap w-full h-full gap-5 xl:p-2 lg:p-2 sm:p-2 dark:bg-black overflow-auto'>
       {items.map((item) => (
-        <Thumnail
-          key={item.id}
-          id={item.id}
-          title={item.snippet.title}
-          channel={item.snippet.channelTitle}
-          logo={''}
-          thumnail={item.snippet.thumbnails.medium.url}
-          date={item.snippet.publishedAt}
-          views={item.statistics.viewCount} // Access statistics from the correct field
-        />
+        <div className='w-[calc(80%)] flex-grow sm:w-[calc(90%)] md:w-[calc(44%)] lg:w-[calc(30%)] xl:w-[min(20%,350px)] flex flex-col' >
+          <Thumnail
+            key={item.id}
+            id={item.id}
+            title={item.snippet.title}
+            channel={item.snippet.channelTitle}
+            logo={''}
+            thumnail={item.snippet.thumbnails.medium.url}
+            date={item.snippet.publishedAt}
+            views={item.statistics.viewCount} // Access statistics from the correct field
+          />
+        </div>
       ))}
     </div>
   );

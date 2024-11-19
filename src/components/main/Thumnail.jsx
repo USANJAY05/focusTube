@@ -15,12 +15,12 @@ const Thumnail = ({channel, logo, thumnail, title, views, date, id}) => {
         }
     };
   return (
-    <div className='dark:text-white w-[calc(80%)] sm:w-[calc(90%)] md:w-[calc(44%)] lg:w-[calc(44%)] xl:w-[min(98%,350px)] flex flex-col mt-8 m-[10%] sm:m-[5%] md:m-[2.5%] lg:m-[3%] xl:m-[1.65%] '
+    <div className='dark:text-white flex-grow  mt-1  '
         onClick={() => navigate(`/video/${id}`)}
     >
         <img src={thumnail}
             alt="thumnail"
-            className='rounded-lg h-[100vh-52] w-[100vh-10]'
+            className='rounded-lg w-[100%]'
         />            
         <div className='flex flex-wrap justify-between mt-2'>
             <div className='rounded-3xl'>
