@@ -10,7 +10,7 @@ const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
   const safeTitle = title || 'Untitled'; // Fallback in case 'title' is undefined or null
 
   return (
-    <div className='dark:text-white flex-grow mt-1 hover:cursor-pointer'>
+    <div className='dark:text-white flex-grow mt-1 hover:cursor-pointer rounded-lg dark:active:bg-gray-900 active:bg-gray-200'>
       <Link to={`/video/${id}`}>
         <img
           src={thumnail}
@@ -19,12 +19,13 @@ const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
         />
       </Link>
       <div className='flex justify-between mt-2 pl-5'>
-        <Link to={`/video/${id}`}>
           <div className='inline-block w-[calc(100%)]'>
             {/* Safe title check */}
-            <h2 className='font-bold'>
-              {safeTitle.length < 60 ? safeTitle : `${safeTitle.slice(0, 55)}...`}
-            </h2>
+            <Link to={`/video/${id}`}>
+              <h2 className='font-bold'>
+                {safeTitle.length < 60 ? safeTitle : `${safeTitle.slice(0, 55)}...`}
+              </h2>
+            </Link>
             <p className='text-sm text-gray-400 dark:hover:text-white hover:text-black'>
               <abbr className='no-underline' title={channel}>{channel}</abbr>
             </p>
@@ -32,7 +33,6 @@ const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
               {count(views)} * {moment(date).fromNow()}
             </p>
           </div>
-        </Link>
         <div className=''>
           <BsThreeDotsVertical className='dark:hover:bg-gray-600 p-2 box-content rounded-2xl' />
         </div>
