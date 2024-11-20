@@ -5,6 +5,9 @@ import axios from 'axios';
 import ScrollBar from '../components/scrollBar/ScrollBar';
 import Thumnail from '../components/main/Thumnail';
 import moment from 'moment';
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
+import count from '../utils/count.js'
 
 const Video = () => {
   const { id } = useParams(); // Correct destructuring
@@ -124,7 +127,7 @@ const Video = () => {
         {/* Video Title and Channel Info */}
         <div className="flex flex-col gap-2">
           <h1 className="text-xl font-bold">{videoData.snippet.title}</h1>
-          <p>{videoData.statistics.viewCount} Views &bull; {moment(videoData.snippet.publishedAt).fromNow()}</p>
+          <p>{count(videoData.statistics.viewCount)} Views &bull; {moment(videoData.snippet.publishedAt).fromNow()}</p>
           <div className="flex flex-col gap-2 lg:flex-row sm:flex-row md:flex-row xl:flex-row justify-between">
             <div className="flex gap-3 justify-between w-full xl:w-auto">
               <div className="flex gap-2">
@@ -135,7 +138,7 @@ const Video = () => {
                 />
                 <div className="flex flex-col gap-0">
                   <h3>{channelData.snippet.title}</h3>
-                  <small className="text-gray-400 -mt-2">{channelData.statistics.subscriberCount} subscribers</small>
+                  <small className="text-gray-400 -mt-2">{count(channelData.statistics.subscriberCount)} subscribers</small>
                 </div>
               </div>
               <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Subscribe">
@@ -143,12 +146,15 @@ const Video = () => {
               </button>
             </div>
             <div className="flex gap-3">
-              <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Like">
-                Like {videoData.statistics.likeCount}
+              <button className="px-3  py-1 rounded-3xl flex gap-2 items-center dark:bg-gray-700" aria-label="Like">
+              <AiOutlineLike className='h-6 w-6' />
+               {count(videoData.statistics.likeCount)}
+               <div className='border-r border-red-500'></div>
+              <AiOutlineDislike className='h-6 w-6' />
               </button>
-              <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Dislike">
+              {/* <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Dislike">
                 Dislike
-              </button>
+              </button> */}
               <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Share">
                 Share
               </button>

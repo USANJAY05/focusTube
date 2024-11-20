@@ -2,17 +2,9 @@ import moment from 'moment';
 import React from 'react';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import count from '../../utils/count.js'
 
 const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
-  const viewCount = (views) => {
-    if (views >= 1000000) {
-      return (views / 1000000).toFixed(1) + 'M';
-    } else if (views >= 1000) {
-      return (views / 1000).toFixed(1) + 'K';
-    } else {
-      return views;
-    }
-  };
 
   // Ensure 'title' is defined and a string
   const safeTitle = title || 'Untitled'; // Fallback in case 'title' is undefined or null
@@ -37,7 +29,7 @@ const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
               <abbr className='no-underline' title={channel}>{channel}</abbr>
             </p>
             <p className='text-sm text-gray-400'>
-              {viewCount(views)} * {moment(date).fromNow()}
+              {count(views)} * {moment(date).fromNow()}
             </p>
           </div>
         </Link>
