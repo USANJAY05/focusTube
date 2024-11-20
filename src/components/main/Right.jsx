@@ -14,10 +14,10 @@ const Right = () => {
         params: {
           part: 'snippet,contentDetails,statistics',
           chart: 'mostPopular',
-          maxResults: 50,
+          maxResults: 20,
           regionCode: 'IN',
           videoCategoryId: key,
-          key: 'AIzaSyDJamfG7JXMxj53vzVMAHs1PIN7RWBRRiA'
+          key: 'AIzaSyDbwET5BMato6uX2Y1-8nZqR9YydeRErm8'
         }
       });
       return response.data;
