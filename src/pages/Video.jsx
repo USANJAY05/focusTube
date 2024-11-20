@@ -114,14 +114,14 @@ const Video = () => {
       <div className="xl:w-[75%] lg:w-[75%] md:w-full flex flex-col dark:text-white gap-2">
         {/* Video Embed */}
         <div>
-          <iframe
-            className="w-full sm:h-[calc(100vh-400px)] h-[37vh] xl:h-[calc(100vh-300px)] rounded-lg"
-            src={`https://www.youtube.com/embed/${id}?autoplay=1`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+        <iframe
+          className="w-full sm:h-[calc(100vh-400px)] h-[37vh] xl:h-[calc(100vh-300px)] rounded-lg"
+          src={`https://www.youtube.com/embed/${id}?autoplay=1&controls=1&loop=1&playlist=${id}&modestbranding=1&rel=0&fs=0`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
         </div>
 
         {/* Video Title and Channel Info */}
