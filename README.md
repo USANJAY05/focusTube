@@ -75,15 +75,3 @@ npm run build  // Or yarn build
 
 This creates an optimized `dist` folder containing the production-ready files.
 
-
-### Troubleshooting
-
-* **Incorrect Package Manager:** Ensure you use the correct package manager (npm or yarn) as indicated in the project's `package.json` file.
-* **Missing Dependencies:** If you encounter errors during installation, double-check your internet connection and ensure you have the necessary permissions.  Try running the install command again.
-* **Port Conflicts:** If the development server cannot start on port 3000, it will usually try another port. Check the terminal output for the assigned port. You might need to stop any other application using that port.
-* **Node Version:**  Ensure you have a compatible Node.js version. The project's README or `package.json` (look for an engines section) may specify a required version.  Use a Node version manager (nvm) if necessary to switch between Node versions.
-* **Read the README:**  The project's README file on GitHub is your best friend! It often contains specific instructions and troubleshooting tips.
-
-
-This guide provides a general approach.  Always refer to the project's README for any project-specific instructions or configurations.
-```
