@@ -11,11 +11,11 @@ const ScrollBar = () => {
   // Function to fetch video categories
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://www.googleapis.com/youtube/v3/videoCategories', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/videoCategories`, {
         params: {
           part: 'snippet',
           regionCode: 'IN',
-          key: 'AIzaSyDbwET5BMato6uX2Y1-8nZqR9YydeRErm8'
+          key: import.meta.env.VITE_API_KEY
         }
       });
       return response.data;

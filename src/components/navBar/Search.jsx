@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <div className='flex gap-5 justify-center items-center w-1/2'>
         <div className='flex w-4/5 h-10 relative'>
-            <input type="text" 
+            <input type="search" 
                 placeholder='Search'
                 tabIndex={1}
                 aria-label='search-box'
