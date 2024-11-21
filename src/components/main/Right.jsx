@@ -17,7 +17,7 @@ const Right = () => {
           maxResults: 20,
           regionCode: 'IN',
           videoCategoryId: key,
-          key: 'AIzaSyDbwET5BMato6uX2Y1-8nZqR9YydeRErm8'
+          key: import.meta.env.VITE_API_KEY
         }
       });
       return response.data;
