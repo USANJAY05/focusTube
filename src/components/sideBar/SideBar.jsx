@@ -42,7 +42,7 @@ const SideBar = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className='w-60 p-4 h-full dark:bg-black overflow-auto fixed xl:relative'>
+    <div className='w-64 p-4 h-full dark:bg-black overflow-auto fixed xl:relative'>
       {/* Render each section of the sidebar */}
       {Object.entries(sidebarData).map(([section, items], idx) => (
         <div key={idx}>

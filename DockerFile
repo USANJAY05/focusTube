@@ -1,0 +1,16 @@
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . . 
+
+ENV VITE_API_KEY="AIzaSyDlgR_Km9XymcIt9hgik1z5-Ot61NE8LXc"
+ENV VITE_API_URL="https://youtube.googleapis.com/youtube/v3"
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
