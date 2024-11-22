@@ -6,13 +6,15 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
   const toggle = useSelector((state) => state.toggle.value)
+  const sideBar = useSelector((state) => state.sideBarActive.value)
+  console.log(sideBar)
   // console.log(toggle)
   return (
-    <div className='flex w-full h-full overflow-auto'>
-      <div>
+    <div className='flex w-full h-full overflow-auto bg-black'>
+      {/* <div>
         {toggle&&
         <SideBar />}
-      </div>
+      </div> */}
       <div className='flex flex-col h-full overflow-auto '>
         <ScrollBar />
         <Right />

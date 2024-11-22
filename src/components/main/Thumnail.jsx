@@ -4,7 +4,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import count from '../../utils/count.js'
 
-const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
+const Thumnail = ({ channelId, channel, thumnail, title, views, date, id }) => {
 
   // Ensure 'title' is defined and a string
   const safeTitle = title || 'Untitled'; // Fallback in case 'title' is undefined or null
@@ -26,9 +26,11 @@ const Thumnail = ({ channel, logo, thumnail, title, views, date, id }) => {
                 {safeTitle.length < 60 ? safeTitle : `${safeTitle.slice(0, 55)}...`}
               </h2>
             </Link>
-            <p className='text-sm text-gray-400 dark:hover:text-white hover:text-black'>
-              <abbr className='no-underline' title={channel}>{channel}</abbr>
-            </p>
+            <Link to={`/channel/${channelId}`}>
+              <p className='text-sm text-gray-400 dark:hover:text-white hover:text-black'>
+                <abbr className='no-underline' title={channel}>{channel}</abbr>
+              </p>
+            </Link>
             <p className='text-sm text-gray-400'>
               {count(views)} * {moment(date).fromNow()}
             </p>

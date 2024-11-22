@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Right = () => {
   const [items, setItems] = useState([]); // Initialize with an empty array
+  console.log(items)
 
   const active = useSelector((state) => state.scrollBarActive.value)
 
@@ -39,10 +40,11 @@ const Right = () => {
   }, [active]);
 
   return (
-    <div className='flex flex-wrap w-full h-full gap-5 xl:p-2 lg:p-2 sm:p-2 dark:bg-black overflow-auto'>
+    <div className='flex flex-wrap w-full h-full gap-[1%]  dark:bg-black overflow-auto'>
       {items.map((item) => (
-        <div key={item.id} className='w-[calc(80%)] flex-grow sm:w-[calc(90%)] md:w-[calc(44%)] lg:w-[calc(30%)] xl:w-[min(20%,350px)] flex flex-col' >
+        <div key={item.id} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-[100%]'>
           <Thumnail
+            channelId={item.snippet.channelId}
             id={item.id}
             title={item.snippet.title}
             channel={item.snippet.channelTitle}
@@ -53,6 +55,21 @@ const Right = () => {
           />
         </div>
       ))}
+      <div className='flex flex-wrap gap-[1%] '>
+      {/* <div className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-[100%]'>
+          <Thumnail
+                channelId={''}
+                id={'id'}
+                title={''}
+                channel={''}
+                logo={''}
+                thumnail={'https://pbs.twimg.com/media/D457oyrUEAAb-nI.jpg'}
+                date={''}
+                views={''} // Access statistics from the correct field
+              />
+      </div> */}
+        
+      </div>
     </div>
   );
 };

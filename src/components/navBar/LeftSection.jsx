@@ -18,10 +18,12 @@ const LeftBtn = () => {
               onClick={() => dispatch(toggle())}
             />
             <Link to='/'>
-              <div className='flex gap-1 items-center'>
-                  <img src={icon} width={30} alt="yt-icon" />
-                  <h1 className='font-bold'>YouTube</h1>
-              </div>
+              <abbr title="FocusTube" className='no-underline'>
+                <div className='flex gap-1 items-center'>
+                    <img src={icon} width={30} alt="yt-icon" />
+                    <h1 className='font-bold'>FocusTube</h1>
+                </div>
+              </abbr>
             </Link>
         </div>
     </div>
