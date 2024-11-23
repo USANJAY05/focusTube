@@ -12,7 +12,7 @@ export default function App() {
       <BrowserRouter>
         <NavBar />
         <div className="flex overflow-auto h-full">
-          {/* <SideBar /> */}
+          <SideBar />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/video/:id' element={<Video />} />

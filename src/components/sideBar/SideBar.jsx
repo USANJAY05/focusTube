@@ -39,10 +39,13 @@ const SideBar = () => {
   };
 
   const active = useSelector((state) => state.sideBarActive.value)
+  const toggle = useSelector((state) => state.toggle.value)
+  console.log(toggle,'toggle')
   const dispatch = useDispatch()
+  console.log(active)
 
   return (
-    <div className='w-64 p-4 h-full dark:bg-black overflow-auto fixed xl:relative'>
+    <div className={`w-72 p-4 h-full dark:bg-black overflow-auto fixed xl:relative ${toggle ===false?'hidden':''}`}>
       {/* Render each section of the sidebar */}
       {Object.entries(sidebarData).map(([section, items], idx) => (
         <div key={idx}>
