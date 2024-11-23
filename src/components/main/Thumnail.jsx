@@ -10,7 +10,7 @@ const Thumnail = ({ channelId, channel, thumnail, title, views, date, id }) => {
   const safeTitle = title || 'Untitled'; // Fallback in case 'title' is undefined or null
 
   return (
-    <div className='dark:text-white w-full bg-blue-600 mt-1 hover:cursor-pointer rounded-lg dark:active:bg-gray-900 active:bg-gray-200'>
+    <div className='dark:text-white w-full mt-1 hover:cursor-pointer rounded-lg dark:active:bg-gray-900 active:bg-gray-200'>
       <Link to={`/video/${id}`}>
         <img
           src={thumnail}

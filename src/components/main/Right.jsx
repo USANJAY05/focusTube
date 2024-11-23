@@ -42,7 +42,7 @@ const Right = () => {
   return (
     <div className='flex flex-wrap w-full h-full gap-[1%]  dark:bg-black overflow-auto'>
       {items.map((item) => (
-        <div key={item.id} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full bg-red-400 flex-grow'>
+        <div key={item.id} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full flex-grow'>
           <Thumnail
             channelId={item.snippet.channelId}
             id={item.id}
