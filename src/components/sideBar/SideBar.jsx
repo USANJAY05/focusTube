@@ -14,27 +14,28 @@ import { MdOutlineMovie } from "react-icons/md";
 import { HiOutlineSignal } from "react-icons/hi2";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSideActive } from '../../redux/slice/sideBarActive-slice';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
 
   const sidebarData = {
     Top: [
-      { icon: <IoMdHome />, name: 'Home' },
-      { icon: <SiYoutubeshorts />, name: 'Shorts' },
-      { icon: <MdOutlineSubscriptions />, name: 'Subscriptions' },
+      { icon: <IoMdHome />, name: 'Home', route: '/' },
+      { icon: <SiYoutubeshorts />, name: 'Shorts', route: '/' },
+      { icon: <MdOutlineSubscriptions />, name: 'Subscriptions', route: '/' },
     ],
     Middle: [
-      { icon: <LuHistory />, name: 'History' },
-      { icon: <CgPlayList />, name: 'Playlist' },
-      { icon: <GoVideo />, name: 'Your Videos' },
-      { icon: <MdOutlineWatchLater />, name: 'Watch later' },
-      { icon: <AiOutlineLike />, name: 'Liked videos' },
+      { icon: <LuHistory />, name: 'History', route: '/'  },
+      { icon: <CgPlayList />, name: 'Playlist', route: '/'  },
+      { icon: <GoVideo />, name: 'Your Videos', route: '/'  },
+      { icon: <MdOutlineWatchLater />, name: 'Watch later', route: '/'  },
+      { icon: <AiOutlineLike />, name: 'Liked videos', route: '/'  },
     ],
     Bottom: [
-      { icon: <ImFire />, name: 'Trending' },
-      { icon: <IoMusicalNotesOutline />, name: 'Music' },
-      { icon: <MdOutlineMovie />, name: 'Movies' },
-      { icon: <HiOutlineSignal />, name: 'Live' },
+      { icon: <ImFire />, name: 'Trending', route: '/'  },
+      { icon: <IoMusicalNotesOutline />, name: 'Music' , route: '/' },
+      { icon: <MdOutlineMovie />, name: 'Movies', route: '/'  },
+      { icon: <HiOutlineSignal />, name: 'Live', route: '/'  },
     ]
   };
 
@@ -52,10 +53,12 @@ const SideBar = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`w-full p-2 flex items-center gap-4 hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white ${active == item.name?'bg-slate-200 dark:bg-slate-800':''}`}
+              className={`w-full p-2 flex hover:cursor-pointer dark:hover:bg-slate-800 hover:bg-slate-200 rounded-lg dark:text-white ${active == item.name?'bg-slate-200 dark:bg-slate-800':''}`}
               onClick={() => dispatch(setSideActive(item.name))}
             >
-              {item.icon} <span>{item.name}</span>
+              <Link className='w-full flex items-center gap-4' to={item.route}>
+                {item.icon} <span>{item.name}</span>
+              </Link>
             </div>
           ))}
           <hr className='border-gray-600 my-2' />
