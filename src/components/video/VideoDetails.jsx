@@ -5,6 +5,7 @@ import { AiOutlineDislike } from "react-icons/ai";
 import count from '../../utils/count.js'
 import { PiShareFat } from "react-icons/pi";
 import { GoBookmark } from "react-icons/go";
+import { Link } from 'react-router-dom';
 
 const VideoDetails = ({videoData,channelData}) => {
   return (
@@ -14,13 +15,17 @@ const VideoDetails = ({videoData,channelData}) => {
     <div className="flex flex-col gap-2 lg:flex-row sm:flex-row md:flex-row xl:flex-row justify-between">
       <div className="flex gap-3 justify-between w-full xl:w-auto">
         <div className="flex gap-2">
-          <img
-            src={channelData.snippet.thumbnails.default.url} // Use channel thumbnail from channel data
-            alt="channel-logo"
-            className="w-10 h-10 rounded-3xl"
-          />
+          <Link to={`/channel/${channelData.id}`} >
+            <img
+              src={channelData.snippet.thumbnails.default.url} // Use channel thumbnail from channel data
+              alt="channel-logo"
+              className="w-10 h-10 rounded-3xl"
+            />
+          </Link>
           <div className="flex flex-col gap-0">
-            <h3>{channelData.snippet.title}</h3>
+            <Link to={`/channel/${channelData.id}`} >
+              <h3>{channelData.snippet.title}</h3>
+            </Link>
             <small className="text-gray-400 -mt-2">{count(channelData.statistics.subscriberCount)} subscribers</small>
           </div>
         </div>
