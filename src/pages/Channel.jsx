@@ -11,6 +11,7 @@ const Channel = () => {
   const [channelVideos, setChannelVideos] = useState([]);
   const [channelPlaylists, setChannelPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [orderBy, setOrderBy] = useState('date')
   const [error, setError] = useState(null);
 
   const { channelId } = useParams();
@@ -43,22 +44,24 @@ const Channel = () => {
   // Fetch channel videos if not already fetched
   const fetchChannelVideos = async () => {
     try {
-      if (!fetchedVideos) {
+      // if (!fetchedVideos) {
         const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
             part: 'snippet',
             channelId: channelId,
             maxResults: 5,
+            order: orderBy, // Order videos by publish date (latest first)
             key: import.meta.env.VITE_API_KEY,
           },
         });
         setChannelVideos(response.data.items);
         setFetchedVideos(true); // Mark videos as fetched
-      }
+      // }
     } catch (error) {
       setError('Error fetching channel videos');
     }
   };
+  
 
   // Fetch channel playlists if not already fetched
   const fetchChannelPlaylists = async () => {
@@ -68,6 +71,7 @@ const Channel = () => {
           params: {
             part: 'snippet',
             channelId: channelId,
+            order: orderBy,
             maxResults: 5,
             key: import.meta.env.VITE_API_KEY,
           },
@@ -94,10 +98,11 @@ const Channel = () => {
   useEffect(() => {
     if (active === 'Videos') {
       fetchChannelVideos();
+      console.log('working')
     } else if (active === 'Playlist') {
       fetchChannelPlaylists();
     }
-  }, [active]);
+  }, [active, orderBy]);
 
   if (loading) {
     return <div>Loading channel details...</div>;
@@ -123,8 +128,9 @@ const Channel = () => {
           />
           <div className='flex flex-col gap-2'>
             <h2 className='text-3xl font-bold'>{channelDetails.snippet.title}</h2>
+            <p>{channelDetails.snippet.customUrl}</p>
             <p className='flex flex-wrap gap-3'>
-              <span>{formatNumber(channelDetails.statistics.videoCount)} videos</span> 
+              <span>{formatNumber(count(channelDetails.statistics.videoCount))} videos</span> 
               <span>{formatNumber(count(channelDetails.statistics.subscriberCount))} subscribers</span>
             </p>
             <button className='p-2 px-4 rounded-3xl dark:bg-slate-700 dark:hover:bg-slate-600 bg-slate-200 hover:bg-slate-400'>
@@ -142,6 +148,14 @@ const Channel = () => {
         >{item}</p>
         ))}
       </section>
+      {active === 'Videos' &&
+      <section className='flex justify-end my-4'>
+        <select onChange={(e) => setOrderBy(e.target.value)} className='dark:text-white dark:bg-black outline-none border ' name="" id="">
+          <option value="date">latest</option>
+          <option value="viewCount">popular</option>
+        </select>
+      </section>}
+      
       {/* Videos Section */}
       {active === 'Videos' &&
       <section className='flex flex-wrap w-full h-full gap-[1%] dark:bg-black mt-3'>
