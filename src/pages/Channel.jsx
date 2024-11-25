@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import Thumnail from '../components/main/Thumnail';
 import { RiPlayList2Fill } from "react-icons/ri";
 import convertDate from '../utils/isoDateConverter.js'
+import count from '../utils/count.js';
 
 const Channel = () => {
   const [channelDetails, setChannelDetails] = useState(null);
@@ -121,10 +122,10 @@ const Channel = () => {
             className='w-32 h-32 rounded-[100%]'
           />
           <div className='flex flex-col gap-2'>
-            <h2>{channelDetails.snippet.title}</h2>
+            <h2 className='text-3xl font-bold'>{channelDetails.snippet.title}</h2>
             <p className='flex flex-wrap gap-3'>
               <span>{formatNumber(channelDetails.statistics.videoCount)} videos</span> 
-              <span>{formatNumber(channelDetails.statistics.subscriberCount)} subscribers</span>
+              <span>{formatNumber(count(channelDetails.statistics.subscriberCount))} subscribers</span>
             </p>
             <button className='p-2 px-4 rounded-3xl dark:bg-slate-700 dark:hover:bg-slate-600 bg-slate-200 hover:bg-slate-400'>
               Subscribe
