@@ -108,7 +108,7 @@ const Video = () => {
   }
 
   return (
-    <div className="flex flex-wrap sm:p-5 xs-p-5 gap-5 dark:bg-black overflow-auto">
+    <div className="flex flex-wrap sm:p-5 xs-p-5 gap-5 dark:bg-black overflow-auto w-full">
       {/* Main video section */}
       <div className="xl:w-[75%] lg:w-[75%] md:w-full w-full flex flex-col dark:text-white gap-2">
         {/* Video Embed */}
