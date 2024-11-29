@@ -20,7 +20,7 @@ const Search = () => {
           placeholder="Search"
           tabIndex={1}
           aria-label="search-box"
-          className="w-full h-full -mr-3 dark:bg-black border outline-none border-slate-400 focus:border-blue-500 rounded-l-3xl py-1 px-5"
+          className="w-full h-full -mr-3 dark:bg-black border outline-none border-slate-400 dark:border-slate-700 focus:border-blue-500 rounded-l-3xl py-1 px-5"
         />
         <CiSearch
           className="w-10 h-full ml-3 px-3 rounded-r-2xl box-content bg-gray-300 dark:bg-slate-800"
