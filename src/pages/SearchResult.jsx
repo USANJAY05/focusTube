@@ -24,9 +24,9 @@ const SearchResult = () => {
   }, [query]);
 
   return (
-    <div className="flex w-full h-full overflow-auto bg-black">
+    <div className="flex w-full h-full overflow-auto dark:bg-black">
       <div className="flex flex-col h-full w-full overflow-auto">
-        <section className="w-full dark:text-white dark:bg-black overflow-auto flex flex-col gap-8">
+        <section className="w-full dark:text-white dark:dark:bg-black overflow-auto flex flex-col gap-8">
           {items.map((item, idx) => {
             const isChannel = item.id.kind === 'youtube#channel';
             const isVideo = item.id.kind === 'youtube#video';
@@ -35,7 +35,7 @@ const SearchResult = () => {
             return (
               <section
                 key={idx}
-                className="w-full flex gap-10 items-center justify-between p-5"
+                className="w-full flex gap-10 items-center p-5"
               >
                 {isChannel && (
                   <>
@@ -55,7 +55,7 @@ const SearchResult = () => {
                         <p className="text-gray-400">{snippet.description}</p>
                       </Link>
                       <div>
-                        <button className="bg-slate-600 hover:bg-slate-500 rounded-3xl px-4 py-2">
+                        <button className="bg-slate-600 text-white hover:bg-slate-500 rounded-3xl px-4 py-2">
                           Subscribe
                         </button>
                       </div>
