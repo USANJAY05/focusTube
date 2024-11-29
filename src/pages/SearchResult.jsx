@@ -28,7 +28,7 @@ const SearchResult = () => {
   return (
     <div className="flex w-full h-full overflow-auto bg-black">
       <div className="flex flex-col h-full w-full overflow-auto">
-        <ScrollBar />
+        {/* <ScrollBar /> */}
         <section className="w-full dark:text-white dark:bg-black overflow-auto flex flex-col gap-8">
           {items.map((item, idx) => {
             const isChannel = item.id.kind === 'youtube#channel';
