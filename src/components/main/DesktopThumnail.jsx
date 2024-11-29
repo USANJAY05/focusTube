@@ -19,7 +19,7 @@ const DesktopThumnail = ({ channelId, channel, thumnail, title, views, date, id 
         />
       </Link>
       <div className='flex justify-between mt-2 pl-5 w-3/5'>
-          <div className='inline-block w-full'>
+          <div className='flex flex-col gap-2 w-full '>
             {/* Safe title check */}
             <Link to={`/video/${id}`}>
               <h2 className='font-bold'>

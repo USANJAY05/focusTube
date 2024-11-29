@@ -49,12 +49,14 @@ const SearchResult = () => {
                         className="w-32 h-32 rounded-full"
                       />
                     </div>
-                    <div>
-                      <h1>{snippet.channelTitle}</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h1 className='font-bold text-xl'>{snippet.channelTitle}</h1>
                       <p>{snippet.description}</p>
-                      <button className="bg-slate-600 rounded-3xl px-4 py-2">
-                        Subscribe
-                      </button>
+                      <div>
+                        <button className="bg-slate-600 rounded-3xl px-4 py-2">
+                            Subscribe
+                        </button>
+                      </div>
                     </div>
                   </>
                 )}
