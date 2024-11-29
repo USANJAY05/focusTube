@@ -8,8 +8,7 @@ const Home = () => {
   const toggle = useSelector((state) => state.toggle.value)
   const sideBar = useSelector((state) => state.sideBarActive.value)
   console.log(sideBar)
-  // console.log(toggle)
-  return (
+   return (
     <div className='flex w-full h-full overflow-auto bg-black'>
       {/* <div>
         {toggle&&
