@@ -21,21 +21,21 @@ const SideBar = () => {
   const sidebarData = {
     Top: [
       { icon: <IoMdHome />, name: 'Home', route: '/' },
-      { icon: <SiYoutubeshorts />, name: 'Shorts', route: '/' },
-      { icon: <MdOutlineSubscriptions />, name: 'Subscriptions', route: '/' },
+      { icon: <SiYoutubeshorts />, name: 'Shorts', route: '/shorts' },
+      { icon: <MdOutlineSubscriptions />, name: 'Subscriptions', route: '/subscriptions' },
     ],
     Middle: [
-      { icon: <LuHistory />, name: 'History', route: '/'  },
-      { icon: <CgPlayList />, name: 'Playlist', route: '/'  },
-      { icon: <GoVideo />, name: 'Your Videos', route: '/'  },
-      { icon: <MdOutlineWatchLater />, name: 'Watch later', route: '/'  },
-      { icon: <AiOutlineLike />, name: 'Liked videos', route: '/'  },
+      { icon: <LuHistory />, name: 'History', route: '/history'  },
+      { icon: <CgPlayList />, name: 'Playlist', route: '/playlist'  },
+      { icon: <GoVideo />, name: 'Your Videos', route: '/videos'  },
+      { icon: <MdOutlineWatchLater />, name: 'Watch later', route: '/watchLater'  },
+      { icon: <AiOutlineLike />, name: 'Liked videos', route: '/likedvideos'  },
     ],
     Bottom: [
-      { icon: <ImFire />, name: 'Trending', route: '/'  },
-      { icon: <IoMusicalNotesOutline />, name: 'Music' , route: '/' },
-      { icon: <MdOutlineMovie />, name: 'Movies', route: '/'  },
-      { icon: <HiOutlineSignal />, name: 'Live', route: '/'  },
+      { icon: <ImFire />, name: 'Trending', route: '/trending'  },
+      { icon: <IoMusicalNotesOutline />, name: 'Music' , route: '/music' },
+      { icon: <MdOutlineMovie />, name: 'Movies', route: '/movies'  },
+      { icon: <HiOutlineSignal />, name: 'Live', route: '/live'  },
     ]
   };
 

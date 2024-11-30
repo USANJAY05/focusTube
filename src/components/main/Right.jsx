@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Thumnail from './Thumnail';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { setScrollActive } from '../../redux/slice/scrollBarActive-slice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Right = () => {
-  const [items, setItems] = useState([]); // Initialize with an empty array
-  console.log(items)
 
-  const active = useSelector((state) => state.scrollBarActive.value)
+const Right = ({ sideBar }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const [items, setItems] = useState([]);
+  const active = useSelector((state) => state.scrollBarActive.value);
 
+  // Fetch popular videos for 'Trending'
   const fetchData = async (key) => {
     try {
       const response = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
@@ -17,9 +21,9 @@ const Right = () => {
           chart: 'mostPopular',
           maxResults: 20,
           regionCode: 'IN',
-          videoCategoryId: key,
-          key: import.meta.env.VITE_API_KEY
-        }
+          videoCategoryId: key || 1,
+          key: import.meta.env.VITE_API_KEY,
+        },
       });
       return response.data;
     } catch (error) {
@@ -28,33 +32,85 @@ const Right = () => {
     }
   };
 
+  // Fetch tech-related videos for 'Home'
+  const fetchDataHome = async (query) => {
+    console.log(query)
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/search`, {
+        params: {
+          part: 'snippet',
+          maxResults: 10,
+          q: query || 'tamil tech',  // Default query if 'active' is empty
+          regionCode: 'IN',
+          order:'date',
+          type: 'video',
+          key: import.meta.env.VITE_API_KEY,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchData(active);
-      if (data) {
-        setItems(data.items); // Set the fetched items
+      console.log(typeof active)
+      let data = null;
+      if (sideBar === 'Trending') {
+        if(typeof active === 'string'){
+          dispatch(setScrollActive(0))
+        }
+        data = await fetchData(active);
+      } else if (sideBar === 'Home') {
+        if(typeof active === 'number'){
+          dispatch(setScrollActive('tamil tech'))
+        }
+        data = await fetchDataHome(active);
+      }
+      else if(sideBar ==='music' || sideBar === 'movies' || sideBar ==='live'){
+        data = await fetchData(10)
+      }
+       else {
+        navigate('/not-found'); // Redirect to a not-found page
+      }
+
+      if (data && data.items) {
+        setItems(data.items);
+      } else {
+        setItems([]); // Clear items if no data is available
       }
     };
-
     getData();
-  }, [active]);
+  }, [active, sideBar, navigate]);
 
   return (
-    <div className='flex flex-wrap w-full h-full gap-[1%]  dark:bg-black overflow-auto'>
-      {items.map((item) => (
-        <div key={item.id} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full flex-grow'>
-          <Thumnail
-            channelId={item.snippet.channelId}
-            id={item.id}
-            title={item.snippet.title}
-            channel={item.snippet.channelTitle}
-            logo={''}
-            thumnail={item.snippet.thumbnails.medium.url}
-            date={item.snippet.publishedAt}
-            views={item.statistics.viewCount} // Access statistics from the correct field
-          />
+    <div className='flex flex-wrap w-full h-full gap-[1%] dark:bg-black overflow-auto'>
+      {items.length > 0 ? (
+        items.map((item) => {
+          const videoId = item.id.videoId || item.id;
+          const views = item.statistics?.viewCount || 'N/A';
+          return (
+            <div key={videoId} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full flex-grow'>
+              <Thumnail
+                channelId={item.snippet.channelId}
+                id={videoId}
+                title={item.snippet.title}
+                channel={item.snippet.channelTitle}
+                logo={''}
+                thumnail={item.snippet.thumbnails.medium.url}
+                date={item.snippet.publishedAt}
+                views={views}
+              />
+            </div>
+          );
+        })
+      ) : (
+        <div className='text-center w-full text-white'>
+          {sideBar} comming soon
         </div>
-      ))}
+      )}
     </div>
   );
 };
