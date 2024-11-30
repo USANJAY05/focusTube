@@ -55,21 +55,6 @@ const Right = () => {
           />
         </div>
       ))}
-      <div className='flex flex-wrap gap-[1%] '>
-      {/* <div className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-[100%]'>
-          <Thumnail
-                channelId={''}
-                id={'id'}
-                title={''}
-                channel={''}
-                logo={''}
-                thumnail={'https://pbs.twimg.com/media/D457oyrUEAAb-nI.jpg'}
-                date={''}
-                views={''} // Access statistics from the correct field
-              />
-      </div> */}
-        
-      </div>
     </div>
   );
 };
