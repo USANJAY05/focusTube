@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { setScrollActive } from '../../redux/slice/scrollBarActive-slice';
 import { useDispatch, useSelector } from 'react-redux';
+import fetchData from '../../service/fetchData.js'
+import fetchSearch from '../../service/fetchSearch.js'
 
 
 const Right = ({ sideBar }) => {
@@ -13,51 +15,6 @@ const Right = ({ sideBar }) => {
   const [error, setError] = useState(null)
   const active = useSelector((state) => state.scrollBarActive.value);
 
-  // Fetch popular videos for 'Trending'
-  const fetchData = async (key) => {
-    try {
-      const response = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
-        params: {
-          part: 'snippet,contentDetails,statistics',
-          chart: 'mostPopular',
-          maxResults: 20,
-          regionCode: 'IN',
-          videoCategoryId: key || 1,
-          key: import.meta.env.VITE_API_KEY,
-        },
-      });
-      console.log(response.data.items)
-      return response.data;
-    } catch (error) {
-      setError(error)
-      console.error('Error fetching data: ', error);
-      return null;
-    }
-  };
-
-  // Fetch tech-related videos for 'Home'
-  const fetchDataHome = async (query) => {
-    console.log(query)
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/search`, {
-        params: {
-          part: 'snippet',
-          maxResults: 10,
-          q: query || 'tamil tech',  // Default query if 'active' is empty
-          regionCode: 'IN',
-          order:'date',
-          type: 'video',
-          key: import.meta.env.VITE_API_KEY,
-        },
-      });
-      return response.data;
-    } catch (error) {
-      setError(error)
-      console.error('Error fetching data:', error);
-      return null;
-    }
-  };
-
   useEffect(() => {
     const getData = async () => {
       console.log(typeof active)
@@ -66,15 +23,15 @@ const Right = ({ sideBar }) => {
         if(typeof active === 'string'){
           dispatch(setScrollActive(0))
         }
-        data = await fetchData(active);
+        data = await fetchData(active,setError);
       } else if (sideBar === 'Home') {
         if(typeof active === 'number'){
           dispatch(setScrollActive('@tamil-tech'))
         }
-        data = await fetchDataHome(active);
+        data = await fetchSearch(active,setError);
       }
       else if(sideBar ==='Music' || sideBar === 'Movies' || sideBar === 'Live'){
-        data = await fetchDataHome('@'+sideBar)
+        data = await fetchSearch('@'+sideBar, setError)
       }
        else {
         navigate('/not-found'); // Redirect to a not-found page
