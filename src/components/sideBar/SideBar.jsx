@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-
+import { SiYoutubegaming } from "react-icons/si";
+import { MdNewspaper } from "react-icons/md";
+import { FaPodcast } from "react-icons/fa";
+import { SlBulb } from "react-icons/sl";
+import { IoMdFitness } from "react-icons/io";
+import { CiTrophy } from "react-icons/ci";
+import { RiShoppingBag4Line } from "react-icons/ri";
 import { IoMdHome } from "react-icons/io";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
@@ -24,7 +30,7 @@ const SideBar = () => {
       { icon: <SiYoutubeshorts />, name: 'Shorts', route: '/shorts' },
       { icon: <MdOutlineSubscriptions />, name: 'Subscriptions', route: '/subscriptions' },
     ],
-    Middle: [
+    Middle1: [
       { icon: <LuHistory />, name: 'History', route: '/history'  },
       { icon: <CgPlayList />, name: 'Playlist', route: '/playlist'  },
       { icon: <GoVideo />, name: 'Your Videos', route: '/videos'  },
@@ -36,6 +42,13 @@ const SideBar = () => {
       { icon: <IoMusicalNotesOutline />, name: 'Music' , route: '/music' },
       { icon: <MdOutlineMovie />, name: 'Movies', route: '/movies'  },
       { icon: <HiOutlineSignal />, name: 'Live', route: '/live'  },
+      { icon: <SiYoutubegaming />, name: 'Gaming', route: '/trending'  },
+      { icon: <CiTrophy />, name: 'Sports' , route: '/music' },
+      { icon: <IoMdFitness />, name: 'Fitness', route: '/movies'  },
+      { icon: <MdNewspaper />, name: 'News', route: '/live'  },
+      { icon: <SlBulb />, name: 'Course' , route: '/music' },
+      { icon: <FaPodcast />, name: 'Podcast', route: '/movies'  },
+      { icon: <RiShoppingBag4Line />, name: 'Shoping', route: '/live'  },
     ]
   };
 
