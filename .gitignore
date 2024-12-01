@@ -1,0 +1,115 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debugging and error logs
+*.swp
+*.swo
+*.swn
+*.swn
+*.bak
+*.tmp
+*.temp
+*.pid
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# System files
+Thumbs.db
+ehthumbs.db
+
+# Yarn integrity files
+.yarn-integrity
+.yarnrc.yml
+.pnpm-store
+
+# Build artifacts
+build/
+coverage/
+lib/
+lib-cov/
+*.tsbuildinfo
+output/
+
+# Parcel build artifacts
+.cache/
+.parcel-cache/
+
+# Svelte build artifacts
+.svelte-kit/
+
+# React Native artifacts
+.expo/
+.expo-shared/
+
+# Lerna artifacts
+lerna-debug.log*
+
+# Next.js build output
+.next/
+.vercel/
+
+# Tailwind CSS build cache
+.tailwind-cache
+
+# Storybook
+.storybook-out
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Webpack files
+webpack.config.js
+
+# Temporary files
+tmp/
+temp/
+
+# Eslint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# Stylelint cache
+.stylelintcache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Ignore yarn berry
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Ignore compiled and minified files
+*.min.js
+*.min.css
+*.map
