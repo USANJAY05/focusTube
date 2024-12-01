@@ -12,7 +12,7 @@ const Home = () => {
   console.log(sideBar)
    return (
     <div className='flex w-full h-full overflow-auto dark:bg-black'>
-      {/* <div>
+      {/* <div> 
         {toggle&&
         <SideBar />}
       </div> */}
