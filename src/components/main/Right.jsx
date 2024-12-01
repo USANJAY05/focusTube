@@ -73,14 +73,8 @@ const Right = ({ sideBar }) => {
         }
         data = await fetchDataHome(active);
       }
-      else if(sideBar ==='Music'){
-        data = await fetchData(10)
-      }
-      else if(sideBar === 'Movies'){
-        data = await fetchData(1);
-      }
-      else if(sideBar === 'Live'){
-        data = await fetchDataHome('@Live-tamil')
+      else if(sideBar ==='Music' || sideBar === 'Movies' || sideBar === 'Live'){
+        data = await fetchDataHome('@'+sideBar)
       }
        else {
         navigate('/not-found'); // Redirect to a not-found page
