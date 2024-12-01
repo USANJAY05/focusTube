@@ -25,6 +25,7 @@ const Right = ({ sideBar }) => {
           key: import.meta.env.VITE_API_KEY,
         },
       });
+      console.log(response.data.items)
       return response.data;
     } catch (error) {
       console.error('Error fetching data: ', error);
@@ -65,12 +66,18 @@ const Right = ({ sideBar }) => {
         data = await fetchData(active);
       } else if (sideBar === 'Home') {
         if(typeof active === 'number'){
-          dispatch(setScrollActive('tamil tech'))
+          dispatch(setScrollActive('@tamil-tech'))
         }
         data = await fetchDataHome(active);
       }
-      else if(sideBar ==='music' || sideBar === 'movies' || sideBar ==='live'){
+      else if(sideBar ==='Music'){
         data = await fetchData(10)
+      }
+      else if(sideBar === 'Movies'){
+        data = await fetchData(1);
+      }
+      else if(sideBar === 'Live'){
+        data = await fetchDataHome('@Live-tamil')
       }
        else {
         navigate('/not-found'); // Redirect to a not-found page
