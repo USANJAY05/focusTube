@@ -10,6 +10,7 @@ const Right = ({ sideBar }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(null)
   const active = useSelector((state) => state.scrollBarActive.value);
 
   // Fetch popular videos for 'Trending'
@@ -28,6 +29,7 @@ const Right = ({ sideBar }) => {
       console.log(response.data.items)
       return response.data;
     } catch (error) {
+      setError(error)
       console.error('Error fetching data: ', error);
       return null;
     }
@@ -50,6 +52,7 @@ const Right = ({ sideBar }) => {
       });
       return response.data;
     } catch (error) {
+      setError(error)
       console.error('Error fetching data:', error);
       return null;
     }
@@ -94,7 +97,7 @@ const Right = ({ sideBar }) => {
 
   return (
     <div className='flex flex-wrap w-full h-full gap-[1%] dark:bg-black overflow-auto'>
-      {items.length > 0 ? (
+      {(items.length > 0 && error ===null  )? (
         items.map((item) => {
           const videoId = item.id.videoId || item.id;
           const views = item.statistics?.viewCount || 'N/A';
@@ -114,9 +117,16 @@ const Right = ({ sideBar }) => {
           );
         })
       ) : (
-        <div className='text-center w-full text-white'>
+        error === null ?(
+          <div className='text-center w-full text-white'>
           {sideBar} comming soon
         </div>
+        ):(
+          <div className='text-center w-full text-white'>
+          failed to load {sideBar}
+        </div>
+        )
+
       )}
     </div>
   );
