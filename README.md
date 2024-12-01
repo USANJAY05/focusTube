@@ -1,5 +1,5 @@
 ### Live Link
-<a href='https://focusstube.netlify.app'>click here</a>
+<a href='https://focusstube.netlify.app' target='blank'>click here</a>
 
 ## Pulling and Running a Vite Project from GitHub
 
