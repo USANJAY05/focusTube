@@ -8,11 +8,11 @@ const DEFAULT_HOME_CATEGORIES = [
   { id: 'balachandra web dev', title: 'Web Dev' },
   { id: 'learn machine learning', title: 'Machine Learning' },
   { id: 'tech-news', title: 'Tech News' },
-  { id: 'finance tamil', title: 'Finance' },
+  { id: '@finance.boosan', title: 'Finance' },
   { id: 'tamil-news', title: 'Tamil News' },
   { id: 'tamil-fitness', title: 'Tamil Fitness' },
   { id: 'tamil-finance', title: 'Tamil Finance' },
-  { id: 'tech-tamil', title: 'Tech Tamil' },
+  { id: '@TamilTechOfficial', title: 'Tech Tamil' },
 
   // Education & Learning
   { id: 'programming-tutorials', title: 'Programming Tutorials' },
@@ -21,7 +21,7 @@ const DEFAULT_HOME_CATEGORIES = [
   { id: 'deep-learning', title: 'Deep Learning' },
   { id: 'artificial-intelligence', title: 'Artificial Intelligence' },
   { id: 'devops', title: 'DevOps' },
-  { id: 'cloud-computing', title: 'Cloud Computing' },
+  { id: '@learn cloud computing', title: 'Cloud Computing' },
   { id: 'virtualization', title: 'Virtualization' },
 
   // Development & Tools
