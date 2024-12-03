@@ -59,7 +59,7 @@ const SideBar = () => {
   console.log(active)
 
   return (
-    <div className={`w-72 p-4 h-full dark:bg-black overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${toggle ===false?'hidden':''}`}>
+    <div className={`w-72 p-4 h-full z-50 dark:bg-black overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${toggle ===false?'hidden':''}`}>
       {/* Render each section of the sidebar */}
       {Object.entries(sidebarData).map(([section, items], idx) => (
         <div key={idx}>

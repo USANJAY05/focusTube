@@ -1,183 +1,143 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Thumnail from '../components/main/Thumnail';
-import count from '../utils/count.js';
 import PlayList from '../components/playlist/PlayList.jsx';
 import ChannelAbout from '../components/ChannelAbout.jsx';
+import count from '../utils/count.js';
+import fetchChannelDetails from '../service/fetchChannelDetails.js';
+import fetchChannelPlaylists from '../service/fetchChannelPlayList.js';
+import fetchChannelVideos from '../service/fetchChannelVideos.js';
 
 const Channel = () => {
   const [channelDetails, setChannelDetails] = useState(null);
   const [channelVideos, setChannelVideos] = useState([]);
   const [channelPlaylists, setChannelPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [orderBy, setOrderBy] = useState('date')
+  const [orderBy, setOrderBy] = useState('date');
   const [error, setError] = useState(null);
 
   const { channelId } = useParams();
   const [active, setActive] = useState('Home');
   const items = ['Home', 'Videos', 'Playlist', 'About'];
 
-  // Store fetched states to avoid redundant API calls
-  const [fetchedVideos, setFetchedVideos] = useState(false);
-  const [fetchedPlaylists, setFetchedPlaylists] = useState(false);
-
-  // Fetch channel details only if not fetched already
-  const fetchChannelDetails = async () => {
-    try {
-      if (!channelDetails) {
-        const response = await axios.get('https://www.googleapis.com/youtube/v3/channels', {
-          params: {
-            part: 'snippet,contentDetails,statistics',
-            id: channelId,
-            key: import.meta.env.VITE_API_KEY,
-          },
-        });
-        setChannelDetails(response.data.items[0]);
-        console.log(response.data.items[0])
-      }
-    } catch (error) {
-      setError('Error fetching channel details');
-    }
-  };
-
-  // Fetch channel videos if not already fetched
-  const fetchChannelVideos = async () => {
-    try {
-      // if (!fetchedVideos) {
-        const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
-          params: {
-            part: 'snippet',
-            channelId: channelId,
-            maxResults: 5,
-            order: orderBy, // Order videos by publish date (latest first)
-            key: import.meta.env.VITE_API_KEY,
-          },
-        });
-        setChannelVideos(response.data.items);
-        setFetchedVideos(true); // Mark videos as fetched
-      // }
-    } catch (error) {
-      setError('Error fetching channel videos');
-    }
-  };
-  
-
-  // Fetch channel playlists if not already fetched
-  const fetchChannelPlaylists = async () => {
-    try {
-      if (!fetchedPlaylists) {
-        const response = await axios.get('https://www.googleapis.com/youtube/v3/playlists', {
-          params: {
-            part: 'snippet',
-            channelId: channelId,
-            order: orderBy,
-            maxResults: 5,
-            key: import.meta.env.VITE_API_KEY,
-          },
-        });
-        setChannelPlaylists(response.data.items);
-        setFetchedPlaylists(true); // Mark playlists as fetched
-      }
-    } catch (error) {
-      setError('Error fetching channel playlists');
-    }
-  };
-
-  // Fetch all basic data initially
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDetails = async () => {
       setLoading(true);
-      await fetchChannelDetails();
+      const [data, err] = await fetchChannelDetails(channelId);
+      if (err) {
+        setError(data);
+      } else {
+        setChannelDetails(data);
+      }
       setLoading(false);
     };
-    fetchData();
+    fetchDetails();
   }, [channelId]);
 
-  // Fetch additional data based on active tab
   useEffect(() => {
-    if (active === 'Videos') {
-      fetchChannelVideos();
-      console.log('working')
-    } else if (active === 'Playlist') {
-      fetchChannelPlaylists();
-    }
-  }, [active, orderBy]);
+    const fetchData = async () => {
+      if (active === 'Videos') {
+        const [data, err] = await fetchChannelVideos(channelId, orderBy);
+        if (err) setError(data);
+        else setChannelVideos(data);
+      } else if (active === 'Playlist') {
+        const [data, err] = await fetchChannelPlaylists(channelId);
+        if (err) setError(data);
+        else setChannelPlaylists(data);
+      }
+    };
+    fetchData();
+  }, [active, orderBy, channelId]);
 
-  if (loading) {
-    return <div>Loading channel details...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  // Function to format subscriber count with commas
   const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  if (loading) return <div className="text-center p-10">Loading channel details...</div>;
+  if (error) return <div className="text-center text-red-500 p-10">{error}</div>;
+
   return (
-    <div className='w-full h-full dark:bg-black dark:text-white p-5 overflow-auto'>
+    <div className="w-full h-full dark:bg-black dark:text-white p-5 overflow-auto">
+      {/* Channel Header Section */}
       {channelDetails && (
-        <section className='flex flex-wrap gap-5 p-2 '>
-          <img 
+        <section className="flex flex-wrap gap-5 items-start p-4">
+          <img
             src={channelDetails.snippet.thumbnails.default.url}
-            alt="channel-logo" 
-            className='w-32 h-32 rounded-[100%]'
+            alt="channel-logo"
+            className="w-32 h-32 rounded-full"
           />
-          <div className='flex flex-col gap-2'>
-            <h2 className='text-3xl font-bold'>{channelDetails.snippet.title}</h2>
-            <p>{channelDetails.snippet.customUrl}</p>
-            <p className='flex flex-wrap gap-3'>
-              <span>{formatNumber(count(channelDetails.statistics.videoCount))} videos</span> 
+          <div className="flex flex-col gap-2">
+            <h2 className="text-3xl font-bold">{channelDetails.snippet.title}</h2>
+            <p className="text-gray-500 dark:text-gray-400">@{channelDetails.snippet.customUrl}</p>
+            <p className="flex flex-wrap gap-3 text-gray-700 dark:text-gray-300">
+              <span>{formatNumber(count(channelDetails.statistics.videoCount))} videos</span>
               <span>{formatNumber(count(channelDetails.statistics.subscriberCount))} subscribers</span>
             </p>
-            <button className='p-2 px-4 rounded-3xl dark:bg-slate-700 dark:hover:bg-slate-600 bg-slate-200 hover:bg-slate-400'>
+            <button className="p-2 px-4 rounded-full bg-blue-500 text-white hover:bg-blue-600">
               Subscribe
             </button>
           </div>
         </section>
       )}
-      <section className='flex gap-5 p-2 sticky -top-6 dark:bg-[#000000E6] border-b border-slate-600'>
+
+      {/* Tab Navigation */}
+      <section className="flex gap-5 p-2 sticky -top-6 bg-white dark:bg-black z-10 border-b border-gray-300 dark:border-gray-700">
         {items.map((item) => (
-        <p key={item} 
-          className={`w-20 hover:border-b p-2 dark:text-slate-400 hover:cursor-pointer
-          ${item === active ? 'border-b dark:text-white' : ''}`}
-          onClick={() => setActive(item)}
-        >{item}</p>
+          <p
+            key={item}
+            className={`cursor-pointer pb-2 px-4 text-gray-600 dark:text-gray-400 ${
+              item === active
+                ? 'border-b-2 border-blue-500 text-blue-500 dark:text-blue-400'
+                : 'hover:text-gray-800 dark:hover:text-white'
+            }`}
+            onClick={() => setActive(item)}
+          >
+            {item}
+          </p>
         ))}
       </section>
-      {active === 'Videos' &&
-      <section className='flex justify-end my-4'>
-        <select onChange={(e) => setOrderBy(e.target.value)} className='dark:text-white dark:bg-black outline-none border ' name="" id="">
-          <option value="date">latest</option>
-          <option value="viewCount">popular</option>
-        </select>
-      </section>}
-      
-      {/* Videos Section */}
-      {active === 'Videos' &&
-      <section className='flex flex-wrap w-full h-full gap-[1%] dark:bg-black mt-3'>
-        {/* <h3 className='w-full mb-4 text-xl'>Videos</h3> */}
-        {channelVideos.map((video, idx) => (
-          <div key={idx} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-[100%]'>
-            <Thumnail 
-              thumnail={video.snippet.thumbnails.medium.url}
-              title={video.snippet.title}      
-              id={video.id.videoId}     
-              channel={video.snippet.channelTitle} 
-              date={video.snippet.publishedAt}
-            />
-          </div>
-        ))}
-      </section>}
 
-      {/* Playlists Section */}
-      {active === 'Playlist' && <PlayList channelPlaylists={channelPlaylists} />}
+      {/* Videos Section */}
+      {active === 'Videos' && (
+        <>
+          <section className="flex justify-end my-4">
+            <select
+              value={orderBy}
+              onChange={(e) => setOrderBy(e.target.value)}
+              className="border border-gray-300 dark:border-gray-700 rounded px-3 py-1 bg-white dark:bg-black dark:text-white"
+            >
+              <option value="date">Latest</option>
+              <option value="viewCount">Popular</option>
+            </select>
+          </section>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
+            {channelVideos.map((video, idx) => (
+              <Thumnail
+                key={idx}
+                thumnail={video.snippet.thumbnails.medium.url}
+                title={video.snippet.title}
+                id={video.id.videoId}
+                channel={video.snippet.channelTitle}
+                date={video.snippet.publishedAt}
+              />
+            ))}
+          </section>
+        </>
+      )}
+
+      {/* Playlist Section */}
+      {active === 'Playlist' && (
+        <section className="mt-5">
+          <PlayList channelPlaylists={channelPlaylists} />
+        </section>
+      )}
 
       {/* About Section */}
-      {active === 'About' && <ChannelAbout channelDetails={channelDetails} />}
+      {active === 'About' && (
+        <section className="mt-5">
+          <ChannelAbout channelDetails={channelDetails} />
+        </section>
+      )}
     </div>
   );
 };
