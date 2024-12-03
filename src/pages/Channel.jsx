@@ -119,6 +119,7 @@ const Channel = () => {
                 id={video.id.videoId}
                 channel={video.snippet.channelTitle}
                 date={video.snippet.publishedAt}
+                channelId={channelId}
               />
             ))}
           </section>
