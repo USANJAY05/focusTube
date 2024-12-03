@@ -15,6 +15,8 @@ const Right = ({ sideBar }) => {
   const [error, setError] = useState(null)
   const active = useSelector((state) => state.scrollBarActive.value);
 
+  const content =['Fitness', 'Sports', 'Gaming', 'News', 'Course', 'Podcast', 'Shoping', 'Live', 'Movies', 'Music'];
+
   useEffect(() => {
     const getData = async () => {
       console.log(typeof active)
@@ -30,7 +32,7 @@ const Right = ({ sideBar }) => {
         }
         data = await fetchSearch(active,setError);
       }
-      else if(sideBar ==='Music' || sideBar === 'Movies' || sideBar === 'Live'){
+      else if(content.includes(sideBar)){
         data = await fetchSearch('@'+sideBar, setError)
       }
        else {
