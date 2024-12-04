@@ -72,7 +72,7 @@ const Right = ({ sideBar }) => {
       ) : (
         error === null ?(
           <div className='text-center w-full text-white'>
-          {sideBar} comming soon
+          Login to use {sideBar}
         </div>
         ):(
           <div className='text-center w-full text-white'>
