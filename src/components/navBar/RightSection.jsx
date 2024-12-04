@@ -11,7 +11,7 @@ const RightSection = () => {
         {/* <RiVideoAddLine className='w-6 h-6 p-2 dark:bg-black  box-content rounded-3xl dark:hover:bg-gray-600 hover:bg-gray-200' /> */}
         {/* <IoMdNotificationsOutline className='w-6 h-6 p-2 bg-white dark:bg-black  box-content rounded-3xl dark:hover:bg-gray-600 hover:bg-gray-200' /> */}
         {/* <img src={profile} className='w-8 h-8' alt="profile-icon" /> */}
-        <SignupBtn />
+        <SignupBtn text={'Signup'} />
     </div>
   )
 }

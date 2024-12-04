@@ -6,6 +6,7 @@ import { setScrollActive } from '../../redux/slice/scrollBarActive-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchData from '../../service/fetchData.js'
 import fetchSearch from '../../service/fetchSearch.js'
+import SignupBtn from '../common/SignupBtn.jsx';
 
 
 const Right = ({ sideBar }) => {
@@ -71,8 +72,9 @@ const Right = ({ sideBar }) => {
         })
       ) : (
         error === null ?(
-          <div className='text-center w-full text-white'>
+          <div className='text-center w-full text-white flex flex-col items-center'>
           Login to use {sideBar}
+          <SignupBtn text={'Login'} />
         </div>
         ):(
           <div className='text-center w-full text-white'>
