@@ -55,7 +55,7 @@ const Right = ({ sideBar }) => {
           const videoId = item.id.videoId || item.id;
           const views = item.statistics?.viewCount || 'N/A';
           return (
-            <div key={videoId} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full flex-grow'>
+            <div key={videoId} className='xl:w-[24%] lg:w-[32%] md:w-[49%] sm:w-full'>
               <Thumnail
                 channelId={item.snippet.channelId}
                 id={videoId}
