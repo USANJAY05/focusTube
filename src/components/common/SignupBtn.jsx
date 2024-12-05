@@ -19,7 +19,7 @@ const SignupBtn = ({ text }) => {
             code: code,
             client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
             client_secret: import.meta.env.VITE_GOOGLE_CLIENT_SECRET,
-            redirect_uri: 'http://localhost:3000', // This is your redirect URI
+            redirect_uri: import.meta.env.VITE_REDIRECT_URL, // This is your redirect URI
             grant_type: 'authorization_code',
           },
         });
@@ -63,7 +63,7 @@ const SignupBtn = ({ text }) => {
         <IoPersonCircleOutline className='w-6 h-6' />
         <button>{text}</button>
       </div>:
-      <img className='w-8 h-8 rounded-[100%]' src={profile} alt="" />
+      <img className='w-8 h-8 rounded-[100%] hover:cursor-pointer' src={profile} alt="" />
       }
     </>
 
