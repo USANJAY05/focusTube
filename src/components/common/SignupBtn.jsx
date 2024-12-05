@@ -19,7 +19,7 @@ const SignupBtn = ({ text }) => {
             code: code,
             client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
             client_secret: import.meta.env.VITE_GOOGLE_CLIENT_SECRET,
-            redirect_uri: 'https://focusstube.netlify.app', // This is your redirect URI
+            redirect_uri: import.meta.env.VITE_REDIRECT_URL, // This is your redirect URI
             grant_type: 'authorization_code',
           },
         });
