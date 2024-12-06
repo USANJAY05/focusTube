@@ -8,7 +8,6 @@ const scrollBarActiveSlice = createSlice({
     reducers: {
         setScrollActive: (state, action) => {
             state.value = action.payload;
-            console.log(state.value,"hiiii")
         }
     }
 })
