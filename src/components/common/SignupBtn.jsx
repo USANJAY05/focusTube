@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../redux/slice/profile-slice';
 
-const SignupBtn = ({ text, setResponse }) => {
+const SignupBtn = ({ text }) => {
   const dispatch = useDispatch()
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
@@ -46,7 +46,6 @@ const SignupBtn = ({ text, setResponse }) => {
           email: email,
           img: picture
         }));
-        setResponse(true)
         
 
       } catch (error) {
