@@ -7,6 +7,10 @@ const DropDown = ({shareLink, setToggle, id}) => {
         await navigator.clipboard.writeText(shareLink)
         alert('Link copied')
     }
+    const commingSoon = () => {
+        setToggle(false)
+        alert('Comming Soon')
+    }
     const embedLink =async() =>{
         setToggle(false)
         await navigator.clipboard.writeText(`
@@ -27,19 +31,23 @@ const DropDown = ({shareLink, setToggle, id}) => {
       <ul className="py-2">
         <li
             onClick={() => share()}
-         className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-          Copy Link
+            className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            Copy Link
         </li>
-        <li className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-          Save to watch later
+        <li 
+            onClick={() => commingSoon()}
+            className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            Save to watch later
         </li>
-        <li className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-          Save to playlist
+        <li 
+            onClick={() => commingSoon()}
+            className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            Save to playlist
         </li>
         <li 
             onClick={() => embedLink()}
-        className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-          copy embed link
+            className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            copy embed link
         </li>
       </ul>
     </div>

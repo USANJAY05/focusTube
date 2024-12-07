@@ -11,7 +11,7 @@ const DropDown = ({ img, name, email, setToggle }) => {
     }
 
   return (
-    <div className="absolute top-10 right-10 mt-2 w-60 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
+    <div className="absolute top-10 right-10 mt-2 w-60 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md z-50">
       <div className="flex items-center p-4 border-b dark:border-gray-700">
         <img 
           src={img} 
