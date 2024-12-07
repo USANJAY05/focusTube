@@ -15,6 +15,7 @@ const Right = ({ sideBar }) => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null)
   const active = useSelector((state) => state.scrollBarActive.value);
+  const {name} = useSelector((state) => state.profile)
 
   const content =['Fitness', 'Sports', 'Gaming', 'News', 'Course', 'Podcast', 'Shoping', 'Live', 'Movies', 'Music'];
 
@@ -73,9 +74,15 @@ const Right = ({ sideBar }) => {
       ) : (
         error === null ?(
           <div className='text-center w-full text-white flex flex-col items-center'>
-          Login to use {sideBar}
-          <SignupBtn text={'Login'} />
-        </div>
+            {name === null ? (
+              <>
+                <p>Login to use {sideBar}</p>
+                <SignupBtn text={'Login'} />
+              </>
+            ) : (
+              <p>Comming Soon</p>
+            )}
+          </div>
         ):(
           <div className='text-center w-full text-white'>
           failed to load {sideBar}
