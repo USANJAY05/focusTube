@@ -7,6 +7,8 @@ import Thumnail from '../components/main/Thumnail';
 import Player from '../components/video/Player.jsx';
 import VideoDetails from '../components/video/VideoDetails.jsx';
 import { CommentSection } from '../components/video/CommentSection.jsx';
+import fetchData from '../service/fetchData.js';
+import fetchCommentData from '../service/fetchCommentData.js';
 
 const Video = () => {
   const { id } = useParams(); // Correct destructuring
@@ -14,6 +16,7 @@ const Video = () => {
   const [items, setItems] = useState([]); // Initialize with an empty array
   const [channelData, setChannelData] = useState(null); // Initialize as null to handle loading state
   const [commentData, setCommentData] = useState(null); // Initialize comment data
+  const [error, setError] = useState(null)
 
   const API = import.meta.env.VITE_API_KEY;
   const active = useSelector((state) => state.scrollBarActive.value);
@@ -40,41 +43,11 @@ const Video = () => {
     }
   };
 
-  // Fetch comment data
-  const fetchCommentData = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/commentThreads?part=snippet%2Creplies&videoId=${id}&key=${API}`);
-      return response.data;
-    } catch (error) {
-      console.log(`Error fetching comment data: ${error}`);
-      return null;
-    }
-  };
-
-  // Fetch related videos data
-  const fetchData = async (key) => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/videos`, {
-        params: {
-          part: 'snippet,contentDetails,statistics',
-          chart: 'mostPopular',
-          maxResults: 20,
-          regionCode: 'IN',
-          videoCategoryId: key,
-          key: API,
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching related videos: ', error);
-      return null;
-    }
-  };
 
   // Fetch data when active or videoId changes
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchData(active);
+      const data = await fetchData(active, setError);
       if (data) {
         setItems(data.items); // Set the fetched items
       }
@@ -93,7 +66,7 @@ const Video = () => {
         if (channelData) {
           setChannelData(channelData.items[0]); // Assuming data contains a single channel item
         }
-        const commentData = await fetchCommentData();
+        const commentData = await fetchCommentData(id);
         if (commentData) {
           setCommentData(commentData);
         }
