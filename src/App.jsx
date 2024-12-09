@@ -6,6 +6,7 @@ import NavBar from "./components/navBar/NavBar";
 import Channel from "./pages/Channel";
 import SideBar from "./components/sideBar/SideBar";
 import SearchResult from "./pages/SearchResult";
+import Shots from "./pages/Shots";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <SideBar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/shots/:id' element={<Shots />} />
             <Route path="/:sidebar" element={<Home />} />
             <Route path='/video/:id' element={<Video />} />
             <Route path="/channel/:channelId" element={<Channel />} />
