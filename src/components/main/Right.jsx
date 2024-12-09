@@ -35,20 +35,21 @@ const Right = ({ sideBar }) => {
         data = await fetchSearch(active,setError);
       }
       else if(sideBar === 'Shorts'){
-        console.log('hi')
-        navigate(`/shots/:${id}`)
+        data = await fetchSearch('@Shots', setError)
+        data = data.items[2].id.videoId  // start from here
+        navigate(`/shots/${data}`)
       }
       else if(content.includes(sideBar)){
         data = await fetchSearch('@'+sideBar, setError)
       }
        else {
-        navigate('/not-found'); // Redirect to a not-found page
+        navigate('/not-found'); 
       }
 
       if (data && data.items) {
         setItems(data.items);
       } else {
-        setItems([]); // Clear items if no data is available
+        setItems([]); 
       }
     };
     getData();
