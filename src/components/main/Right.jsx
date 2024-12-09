@@ -34,6 +34,10 @@ const Right = ({ sideBar }) => {
         }
         data = await fetchSearch(active,setError);
       }
+      else if(sideBar === 'Shorts'){
+        console.log('hi')
+        navigate(`/shots/:${id}`)
+      }
       else if(content.includes(sideBar)){
         data = await fetchSearch('@'+sideBar, setError)
       }
