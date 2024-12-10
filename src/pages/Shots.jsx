@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import fetchSearch from '../service/fetchSearch.js';
+import Loading from '../components/common/Loading.jsx';
 
 const Shots = () => {
   const videoRefs = useRef({});
@@ -22,7 +23,7 @@ const Shots = () => {
   }, []);
 
   return (
-    <div className="h-full w-full bg-black overflow-y-scroll relative">
+    <div className="h-full w-full dark:bg-black overflow-y-scroll relative">
       {/* {items.map((item) => ( */}
       {items.length>0 ?
         <div
@@ -36,17 +37,17 @@ const Shots = () => {
             // ref={(el) => (videoRefs.current[items[0].id.videoId] = el)}
             allowFullScreen
           ></iframe>
-        </div>:'loading'}
+        </div>:<Loading />}
       {/* ))}  */}
       <div className="flex flex-col gap-3 fixed right-[10%] top-[45%] text-white">
         <button 
             onClick={() => setPress(press - 1)}
-            className="bg-gray-600 hover:bg-gray-500 rounded-xl p-2">
+            className="dark:bg-gray-600 bg-gray-300 dark:hover:bg-gray-500 rounded-xl p-2">
           <FaArrowUp />
         </button>
         <button 
             onClick={() => setPress(press +1)}
-            className="bg-gray-600 hover:bg-gray-500 rounded-xl p-2">
+            className="dark:bg-gray-600 bg-gray-300 dark:hover:bg-gray-500 rounded-xl p-2">
           <FaArrowDown />
         </button>
       </div>
