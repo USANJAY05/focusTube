@@ -17,7 +17,7 @@ export default function App() {
           <SideBar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/shots/:shotsId' element={<Shots />} />
+            <Route path='/shots/video' element={<Shots />} />
             <Route path="/:sidebar" element={<Home />} />
             <Route path='/video/:id' element={<Video />} />
             <Route path="/channel/:channelId" element={<Channel />} />
