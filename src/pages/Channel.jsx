@@ -81,7 +81,7 @@ const Channel = () => {
       )}
 
       {/* Tab Navigation */}
-      <section className="flex gap-5 p-2 sticky -top-6 bg-white dark:bg-black z-10 border-b border-gray-300 dark:border-gray-700">
+      <section className="flex gap-5 p-2 sticky -top-6 bg-white dark:bg-black z-10 border-b overflow-x-auto scrollbar-none border-gray-300 dark:border-gray-700">
         {items.map((item) => (
           <p
             key={item}
