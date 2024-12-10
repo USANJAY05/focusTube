@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import useClickOutside from '../../hooks/useClickOutside';
 
 const DropDown = ({shareLink, setToggle, id}) => {
+
+  const dropdownRef = useRef(null)
+  useClickOutside(dropdownRef, () => setToggle(false));
+
 
     const share = async() => {
         setToggle(false)
@@ -24,10 +29,10 @@ const DropDown = ({shareLink, setToggle, id}) => {
       ></iframe>`)
         alert('Copied code')
     }
-  return (
-    <div>
-        
-    <div className="absolute top-5 right-5 mt-2 w-52 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
+  return (        
+    <div 
+      ref={dropdownRef}
+      className="absolute top-5 right-5 mt-2 w-52 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md">
       <ul className="py-2">
         <li
             onClick={() => share()}
@@ -50,7 +55,6 @@ const DropDown = ({shareLink, setToggle, id}) => {
             copy embed link
         </li>
       </ul>
-    </div>
     </div>
   )
 }
