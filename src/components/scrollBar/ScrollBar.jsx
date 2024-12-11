@@ -110,7 +110,7 @@ const ScrollBar = ({ sideBar }) => {
               className={`px-2 py-1 w-auto text-sm font-semibold rounded-lg dark:hover:bg-gray-200 dark:hover:text-black hover:bg-gray-700 hover:text-white 
                 dark:bg-slate-800 ${category.snippet?.assignable === false ? 'hidden' : ''}
                 bg-gray-100 dark:text-white hover:cursor-pointer scrollbar-none ${
-                  categoryId === active ? 'dark:bg-gray-200 dark:text-black text-white bg-gray-700' : ''
+                  categoryId === active ? 'dark:bg-gray-100 dark:text-slate-950 text-white bg-gray-700' : ''
                 }`}
               onClick={() => dispatch(setScrollActive(categoryId))}
             >
