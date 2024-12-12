@@ -29,7 +29,7 @@ const Video = () => {
       return response.data;
     } catch (error) {
       console.error('Error fetching data:', error);
-      setError(error);
+      setError(error.response?.data?.error?.message || error.message);
       return null;
     }
   };
@@ -48,15 +48,17 @@ const Video = () => {
 
   // Fetch related items when active state changes
   useEffect(() => {
+    if (!videoData?.snippet?.title) return;
+
     const getData = async () => {
-      const data = await fetchSearch('errormakesclever', setError);
+      const data = await fetchSearch(videoData.snippet.title, setError);
       if (data) {
         setItems(data.items); // Set fetched related items
       }
     };
 
     getData();
-  }, [active]);
+  }, [active, videoData]);
 
   // Fetch video and channel data when video ID changes
   useEffect(() => {
@@ -85,11 +87,11 @@ const Video = () => {
 
   // Handle loading and error states
   if (error) {
-    return <div className="text-red-500">An error occurred: {error.message}</div>;
+    return <div className="text-red-500">An error occurred: {error}</div>;
   }
 
   if (!videoData || !channelData) {
-    return <div className='w-full h-full dark:bg-black'><Loading /></div>;
+    return <div className="flex justify-center items-center w-full h-full dark:bg-black"><Loading /></div>;
   }
 
   // Render the component
@@ -120,10 +122,10 @@ const Video = () => {
 
         {/* Thumbnails */}
         <div className="w-full flex md:flex-row md:flex-wrap flex-col gap-4">
-          {items.map((item, idx) => (
-            <div key={idx}>
+          {items.map((item) => (
+            <div key={item.id?.videoId || item.etag}>
               <Thumnail
-                id={item.id}
+                id={item.id?.videoId || ''}
                 title={item.snippet.title}
                 channel={item.snippet.channelTitle}
                 logo=""
