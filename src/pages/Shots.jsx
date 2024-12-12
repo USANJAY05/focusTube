@@ -24,7 +24,6 @@ const Shots = () => {
 
   return (
     <div className="h-full w-full dark:bg-black overflow-y-scroll relative">
-      {/* {items.map((item) => ( */}
       {items.length>0 ?
         <div
           className="h-full w-full flex justify-center items-center"
@@ -34,11 +33,9 @@ const Shots = () => {
             src={`https://www.youtube.com/embed/${items[press].id.videoId}?enablejsapi=1&autoplay=1&controls=0&loop=1&rel=0&fs=1`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-            // ref={(el) => (videoRefs.current[items[0].id.videoId] = el)}
             allowFullScreen
           ></iframe>
         </div>:<Loading />}
-      {/* ))}  */}
       <div className="flex flex-col gap-3 fixed right-[10%] top-[45%] text-white">
         <button 
             onClick={() => setPress(press - 1)}
