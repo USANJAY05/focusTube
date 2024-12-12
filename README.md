@@ -1,5 +1,5 @@
 ### Live Link
-<a href='https://focusstube.netlify.app' target='_parent'>click here</a>
+<a href='https://focustubee.netlify.app' target='_parent'>click here</a>
 
 ## Pulling and Running a Vite Project from GitHub
 
