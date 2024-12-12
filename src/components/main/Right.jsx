@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Thumnail from './Thumnail';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { setScrollActive } from '../../redux/slice/scrollBarActive-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchData from '../../service/fetchData.js'
 import fetchSearch from '../../service/fetchSearch.js'
 import SignupBtn from '../common/SignupBtn.jsx';
+import Loading from '../common/Loading.jsx';
 
 
 const Right = ({ sideBar }) => {
@@ -16,6 +17,9 @@ const Right = ({ sideBar }) => {
   const [error, setError] = useState(null)
   const active = useSelector((state) => state.scrollBarActive.value);
   const {name} = useSelector((state) => state.profile)
+  const {pathname} = useLocation()
+
+  console.log(pathname,'location')
 
   const content =['Fitness', 'Sports', 'Gaming', 'News', 'Course', 'Podcast', 'Shoping', 'Live', 'Movies', 'Music'];
 
@@ -83,7 +87,8 @@ const Right = ({ sideBar }) => {
                 <SignupBtn text={'Login'} />
               </>
             ) : (
-              <p>Comming Soon</p>
+              pathname === '/not-found'?(<p>Comming soon</p>):
+              <Loading />
             )}
           </div>
         ):(
