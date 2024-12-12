@@ -29,21 +29,21 @@ const VideoDetails = ({videoData,channelData}) => {
             <small className="text-gray-400 -mt-2">{count(channelData.statistics.subscriberCount)} subscribers</small>
           </div>
         </div>
-        <button className="px-3 py-1 rounded-3xl dark:bg-gray-700" aria-label="Subscribe">
+        <button className="px-3 py-1 rounded-3xl bg-red-600 text-white dark:bg-gray-700" aria-label="Subscribe">
           Subscribe
         </button>
       </div>
       <div className="flex gap-3">
-        <button className="px-3  py-1 rounded-3xl flex gap-2 items-center dark:bg-gray-800" aria-label="Like">
+        <button className="px-3  py-1 rounded-3xl flex gap-2 items-center bg-gray-100 hover:bg-gray-200 dark:bg-gray-800" aria-label="Like">
         <AiOutlineLike className='h-6 w-6' />
          {count(videoData.statistics.likeCount)}
          <div className='border-r border-red-500'></div>
         <AiOutlineDislike className='h-6 w-6' />
         </button>
-        <button className="px-3 py-1 rounded-3xl dark:bg-gray-800 flex gap-2 items-center" aria-label="Share">
+        <button className="px-3 py-1 rounded-3xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Share">
         <PiShareFat className='w-5 h-5' />Share
         </button>
-        <button className="px-3 py-1 rounded-3xl dark:bg-gray-800 flex gap-2 items-center" aria-label="Save">
+        <button className="px-3 py-1 rounded-3xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Save">
         <GoBookmark className='w-5 h-5' /> Save
         </button>
       </div>
