@@ -9,9 +9,12 @@ const toggleBarSlice = createSlice({
     toggle: (state) => {
       state.value = !state.value; 
     },
+    setToggle: (state, action) => {
+      state.value = action.payload
+    }
   },
 });
 
-export const { toggle } = toggleBarSlice.actions;
+export const { toggle, setToggle } = toggleBarSlice.actions;
 
 export default toggleBarSlice.reducer;
