@@ -29,7 +29,7 @@ const Shots = () => {
         <div
           className="h-full w-full flex justify-center items-center"
         >
-          <ShotsPlayer />
+          <ShotsPlayer id={items[press].id.videoId} />
         </div>:<Loading />}
       <div className="flex flex-col gap-3 fixed right-[10%] top-[45%] text-white">
         <button 
