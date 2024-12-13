@@ -19,13 +19,13 @@ const Right = ({ sideBar }) => {
   const {name} = useSelector((state) => state.profile)
   const {pathname} = useLocation()
 
-  console.log(pathname,'location')
+  // console.log(pathname,'location')
 
   const content =['Fitness', 'Sports', 'Gaming', 'News', 'Courses', 'Podcasts', 'Shopping', 'Live', 'Movies', 'Music'];
 
   useEffect(() => {
     const getData = async () => {
-      console.log(typeof active)
+      // console.log(typeof active)
       let data = null;
       if (sideBar === 'Trending') {
         if(typeof active === 'string'){

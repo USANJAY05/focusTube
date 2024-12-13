@@ -15,7 +15,7 @@ const Shots = () => {
       try {
         const data = await fetchSearch('@Shots', setError);
         setItems(data.items || []);
-        console.log(data.items[0].id.videoId,'hiiiiii')
+        // console.log(data.items[0].id.videoId,'hiiiiii')
       } catch (err) {
         setError('Failed to fetch videos');
       }

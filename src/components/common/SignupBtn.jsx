@@ -11,7 +11,7 @@ const SignupBtn = ({ text }) => {
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
       const code = codeResponse.code;
-      console.log('Authorization Code:', code);
+      // console.log('Authorization Code:', code);
 
       try {
         // Exchange the authorization code for an access token
@@ -26,7 +26,7 @@ const SignupBtn = ({ text }) => {
         });
 
         const { access_token } = response.data;
-        console.log('Access Token:', access_token);
+        // console.log('Access Token:', access_token);
 
         // Use the access token to fetch user information from Google's API
         const userInfoResponse = await axios.get('https://www.googleapis.com/oauth2/v2/userinfo', {
@@ -36,11 +36,11 @@ const SignupBtn = ({ text }) => {
         });
 
         // Log user info
-        console.log('User Info:', userInfoResponse.data);
+        // console.log('User Info:', userInfoResponse.data);
         // You will get name, email, and picture here
         const { name, email, picture } = userInfoResponse.data;
-        console.log('Name:', name);
-        console.log('Email:', email);
+        // console.log('Name:', name);
+        // console.log('Email:', email);
         dispatch(setProfile({
           name: name,
           email: email,

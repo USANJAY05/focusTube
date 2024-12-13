@@ -9,7 +9,7 @@ const useMobileSize=()=>{
       };
     
     useEffect(()=>{
-        console.log("hello world"+isMobile)
+        // console.log("hello world"+isMobile)
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
 

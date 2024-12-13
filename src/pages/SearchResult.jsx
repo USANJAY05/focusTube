@@ -12,7 +12,7 @@ const SearchResult = () => {
         `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&maxResults=5&key=${import.meta.env.VITE_API_KEY}`
       );
       const data = await response.json();
-      console.log(data.items);
+      // console.log(data.items);
       setItems(data.items || []);
     } catch (error) {
       console.error('Error searching videos:', error);

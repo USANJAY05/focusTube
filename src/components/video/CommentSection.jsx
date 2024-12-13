@@ -5,7 +5,7 @@ import { AiOutlineDislike } from "react-icons/ai";
 import moment from 'moment';
 
 export const CommentSection = ({videoData,commentData}) => {
-  console.log(commentData)
+  // console.log(commentData)
   return (
     <div className='w-full overflow-auto'>
     <h2 className="text-xl font-bold mb-3">{videoData.statistics.commentCount} Comments</h2>
