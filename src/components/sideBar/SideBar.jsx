@@ -15,7 +15,7 @@ const SideBar = () => {
   const setClick = async(name) => {
     dispatch(setSideActive(name))
     if(mobileSize === true){
-      console.log("mobilesssssssssss")
+      //console.log("mobilesssssssssss")
       dispatch(setToggle(false))
     }
   }
