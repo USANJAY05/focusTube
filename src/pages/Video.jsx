@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import ScrollBar from '../components/scrollBar/ScrollBar';
 import Thumnail from '../components/main/Thumnail';
-import Player from '../components/video/Player.jsx';
+import Player from '../components/player/VideoPlayer.jsx'
 import VideoDetails from '../components/video/VideoDetails.jsx';
 import { CommentSection } from '../components/video/CommentSection.jsx';
 import fetchSearch from '../service/fetchSearch.js';

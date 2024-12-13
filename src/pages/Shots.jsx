@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import fetchSearch from '../service/fetchSearch.js';
 import Loading from '../components/common/Loading.jsx';
+import ShotsPlayer from '../components/player/ShotsPlayer.jsx';
 
 const Shots = () => {
   const videoRefs = useRef({});
@@ -28,13 +29,7 @@ const Shots = () => {
         <div
           className="h-full w-full flex justify-center items-center"
         >
-          <iframe
-            className="h-full sm:w-[37%] md:w-[400px] w-full rounded-xl"
-            src={`https://www.youtube.com/embed/${items[press].id.videoId}?enablejsapi=1&autoplay=1&controls=0&loop=1&rel=0&fs=1`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-            allowFullScreen
-          ></iframe>
+          <ShotsPlayer />
         </div>:<Loading />}
       <div className="flex flex-col gap-3 fixed right-[10%] top-[45%] text-white">
         <button 
