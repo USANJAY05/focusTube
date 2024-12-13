@@ -6,7 +6,7 @@ const fetchData = async (key, setError) => {
         params: {
           part: 'snippet,contentDetails,statistics',
           chart: 'mostPopular',
-          maxResults: 10,
+          maxResults: 12,
           regionCode: 'IN',
           videoCategoryId: key || 1,
           key: import.meta.env.VITE_API_KEY,

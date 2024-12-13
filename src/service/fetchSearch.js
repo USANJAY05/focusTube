@@ -5,7 +5,7 @@ const fetchSearch = async (query, setError) => {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/search`, {
         params: {
           part: 'snippet',
-          maxResults: 10,
+          maxResults: 12,
           q: query || 'tamil tech',  // Default query if 'active' is empty
           regionCode: 'IN',
           order:'date',

@@ -21,7 +21,7 @@ const Right = ({ sideBar }) => {
 
   console.log(pathname,'location')
 
-  const content =['Fitness', 'Sports', 'Gaming', 'News', 'Course', 'Podcast', 'Shoping', 'Live', 'Movies', 'Music'];
+  const content =['Fitness', 'Sports', 'Gaming', 'News', 'Courses', 'Podcasts', 'Shopping', 'Live', 'Movies', 'Music'];
 
   useEffect(() => {
     const getData = async () => {
