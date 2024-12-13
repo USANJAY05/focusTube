@@ -2,6 +2,7 @@ import React from 'react'
 import convertDate from '../../utils/isoDateConverter.js'
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
+import moment from 'moment';
 
 export const CommentSection = ({videoData,commentData}) => {
   console.log(commentData)
@@ -19,7 +20,7 @@ export const CommentSection = ({videoData,commentData}) => {
           <div>
             <div className='flex gap-2'>
               <h2 className='dark:text-white'>{comment.snippet.topLevelComment.snippet.authorDisplayName}</h2>
-              <small className='bg-gray-100 dark:bg-gray-800 px-2 rounded-2xl'>{convertDate(comment.snippet.topLevelComment.snippet.publishedAt)}</small>
+              <small className='bg-gray-100 dark:bg-gray-800 px-2 rounded-2xl'>{moment(comment.snippet.topLevelComment.snippet.publishedAt).fromNow()}</small>
             </div>
             <p className='w-full'>{comment.snippet.topLevelComment.snippet.textDisplay}</p>
             <div className='flex gap-1 items-center'>
