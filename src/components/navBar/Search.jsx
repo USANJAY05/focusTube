@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { FaMicrophone } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
+import useMobileSize from '../../hooks/useMobileSize';
+import { IoIosArrowBack } from "react-icons/io";
 
-const Search = () => {
+const Search = ({toggleSearch, setToggleSearch}) => {
   const navigate = useNavigate()
   const [search, setSearch] = useState('')
+  const mobileSize = useMobileSize()
   const searchItem =() =>{
     navigate(`search/${search}`)
   }
   return (
-    <div className="flex gap-5 justify-center items-center w-1/2">
+    <>
+    {(!mobileSize || toggleSearch) &&
+    <div className={`flex gap-5 justify-center items-center w-1/2 ${mobileSize? 'fixed left-0 top-0 w-full bg-inherit p-2':''}`}>
+      {mobileSize &&
+      <IoIosArrowBack onClick={() => setToggleSearch(false)} className='w-10 h-10' />}
       <div className="flex w-4/5 h-10 relative">
         <input
           type="search"
@@ -28,7 +35,8 @@ const Search = () => {
         />
       </div>
       <FaMicrophone className="text-1xl dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-gray-700 bg-gray-100 box-content rounded-3xl p-3" />
-    </div>
+    </div>}
+    </>
   );
 };
 
