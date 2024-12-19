@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoReorderThreeOutline } from "react-icons/io5";
 import icon from '../../assets/icons/yt-icon.png'
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggle } from '../../redux/slice/toggleBar-slice';
+import { useDispatch } from 'react-redux';
+import { setToggle, toggle } from '../../redux/slice/toggleBar-slice';
+import useMobileSize from '../../hooks/useMobileSize';
 
 const LeftBtn = () => {
   const dispatch = useDispatch();
+  const mobileSize = useMobileSize()
+
+  useEffect(() => {
+    if(mobileSize){
+      dispatch(setToggle(false))
+    }
+    else{
+      dispatch(setToggle(true))
+    }
+  },[mobileSize])
 
   return (
     <div>
