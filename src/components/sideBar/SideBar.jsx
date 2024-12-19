@@ -23,7 +23,7 @@ const SideBar = () => {
   return (
     <div onClick={() =>(`md:${dispatch(setToggle(false))}`)} className={`${toggle && 'w-full fixed'} xl:w-auto xl:relative h-full bg-black bg-opacity-70 z-10 `}>
         <div
-          className={`w-60 p-4 h-full z-50 dark:bg-black overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${
+          className={`w-60 p-4 h-full z-50 dark:bg-black bg-white overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${
             toggle === false ? 'hidden' : ''
           }`}
         >

@@ -9,14 +9,14 @@ import DropDown from '../common/ProfileDropDown';
 import useMobileSize from '../../hooks/useMobileSize';
 
 
-const RightSection = ({toggleSearch, setToggleSearch}) => {
+const RightSection = ({ setToggleSearch}) => {
   const {img, name, email} = useSelector((state) => state.profile)
   const [toggle, setToggle] = useState(false)
   const mobileSize = useMobileSize()
   return (
     <div className='flex items-center gap-3 text-2xl'>
       {mobileSize &&
-      <CiSearch onClick={() => setToggleSearch(true)} />}
+      <CiSearch className='p-2 dark:hover:bg-slate-800 hover:bg-slate-100 box-content rounded-3xl' onClick={() => setToggleSearch(true)} />}
         {/* <RiVideoAddLine className='w-6 h-6 p-2 dark:bg-black  box-content rounded-3xl dark:hover:bg-gray-600 hover:bg-gray-200' /> */}
         {/* <IoMdNotificationsOutline className='w-6 h-6 p-2 bg-white dark:bg-black  box-content rounded-3xl dark:hover:bg-gray-600 hover:bg-gray-200' /> */}
         {img !== null ?

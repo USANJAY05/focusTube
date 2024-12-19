@@ -15,7 +15,7 @@ const Search = ({toggleSearch, setToggleSearch}) => {
   return (
     <>
     {(!mobileSize || toggleSearch) &&
-    <div className={`flex gap-5 justify-center items-center w-1/2 ${mobileSize? 'fixed left-0 top-0 w-full bg-inherit p-2':''}`}>
+    <div className={`flex gap-5 justify-center items-center w-1/2 ${mobileSize? 'fixed bg-white dark:bg-inherit left-0 top-0 w-full bg-inherit p-2':''}`}>
       {mobileSize &&
       <IoIosArrowBack onClick={() => setToggleSearch(false)} className='w-10 h-10' />}
       <div className="flex w-4/5 h-10 relative">
