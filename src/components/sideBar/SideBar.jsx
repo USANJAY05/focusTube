@@ -22,14 +22,14 @@ const SideBar = () => {
     }
   }
 
-  const toggle1 = () =>{
+  const toggleFun = () =>{
     if(mobileSize || tabletSize){
       dispatch(setToggle(false))
     }
   }
 
   return (
-    <div onClick={() =>(toggle1())} className={`${toggle && 'w-full fixed'} xl:w-auto xl:relative h-full bg-black bg-opacity-70 z-10 `}>
+    <div onClick={() =>(toggleFun())} className={`${toggle && 'w-full fixed'} xl:w-auto xl:relative h-full bg-black bg-opacity-70 z-10 `}>
         <div
           className={`w-60 p-4 h-full z-50 dark:bg-black bg-white overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${
             toggle === false ? 'hidden' : ''
