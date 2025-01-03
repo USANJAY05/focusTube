@@ -5,12 +5,14 @@ import { setToggle } from '../../redux/slice/toggleBar-slice';
 import { Link } from 'react-router-dom';
 import sidebarData from '../../data/sideBarData';
 import useMobileSize from '../../hooks/useMobileSize.js'
+import useTabletSize from '../../hooks/useTabletSize.js';
 
 const SideBar = () => {
   const active = useSelector((state) => state.sideBarActive.value); // Active menu state
   const toggle = useSelector((state) => state.toggle.value); // Sidebar visibility state
   const dispatch = useDispatch();
   const mobileSize = useMobileSize()
+  const tabletSize = useTabletSize()
 
   const setClick = async(name) => {
     dispatch(setSideActive(name))
@@ -20,8 +22,14 @@ const SideBar = () => {
     }
   }
 
+  const toggle1 = () =>{
+    if(mobileSize || tabletSize){
+      dispatch(setToggle(false))
+    }
+  }
+
   return (
-    <div onClick={() =>(`md:${dispatch(setToggle(false))}`)} className={`${toggle && 'w-full fixed'} xl:w-auto xl:relative h-full bg-black bg-opacity-70 z-10 `}>
+    <div onClick={() =>(toggle1())} className={`${toggle && 'w-full fixed'} xl:w-auto xl:relative h-full bg-black bg-opacity-70 z-10 `}>
         <div
           className={`w-60 p-4 h-full z-50 dark:bg-black bg-white overflow-auto scrollbar-thin hover:scrollbar-thumb-slate-500 fixed xl:relative ${
             toggle === false ? 'hidden' : ''
