@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/slice/profile-slice';
 import useClickOutside from '../../hooks/useClickOutside';
+import { toggle } from '../../redux/slice/toggleBar-slice';
 
 const DropDown = ({ img, name, email, setToggle }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,13 @@ const DropDown = ({ img, name, email, setToggle }) => {
   };
 
   // Use the custom hook to detect clicks outside the dropdown
-  useClickOutside(dropdownRef, () => setToggle(false));
+  useClickOutside(dropdownRef, () => {
+    setTimeout(() => {
+      if(toggle!==false){
+        setToggle(false)
+      }
+    }, 100);
+  });
 
   return (
     <div

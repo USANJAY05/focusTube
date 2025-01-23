@@ -1,10 +1,17 @@
 import React, { useRef } from 'react'
 import useClickOutside from '../../hooks/useClickOutside';
+import { toggle } from '../../redux/slice/toggleBar-slice';
 
 const DropDown = ({shareLink, setToggle, id}) => {
 
   const dropdownRef = useRef(null)
-  useClickOutside(dropdownRef, () => setToggle(false));
+  useClickOutside(dropdownRef, () => {
+    setTimeout(() => {
+      if(toggle!==false){
+        setToggle(false)
+      }
+    }, 100);
+  });
 
 
     const share = async() => {
