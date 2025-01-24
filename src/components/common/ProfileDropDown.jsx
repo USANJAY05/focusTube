@@ -3,15 +3,23 @@ import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/slice/profile-slice';
 import useClickOutside from '../../hooks/useClickOutside';
 import { toggle } from '../../redux/slice/toggleBar-slice';
+import { useNavigate } from 'react-router';
 
 const DropDown = ({ img, name, email, setToggle }) => {
   const dispatch = useDispatch();
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setToggle(false);
+    navigate('/home')
     dispatch(setLogout());
   };
+
+  const navi = (value) => {
+    navigate(value);
+    setToggle(false)
+  }
 
   // Use the custom hook to detect clicks outside the dropdown
   useClickOutside(dropdownRef, () => {
@@ -39,7 +47,7 @@ const DropDown = ({ img, name, email, setToggle }) => {
         </div>
       </div>
       <ul className="py-2">
-        <li className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+        <li onClick={() => navi('/profile')} className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
           Profile
         </li>
         <li className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">

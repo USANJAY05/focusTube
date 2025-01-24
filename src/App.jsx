@@ -7,6 +7,7 @@ import Channel from "./pages/Channel";
 import SideBar from "./components/sideBar/SideBar";
 import SearchResult from "./pages/SearchResult";
 import Shots from "./pages/Shots";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route path='/video/:id' element={<Video />} />
             <Route path="/channel/:channelId" element={<Channel />} />
             <Route path="/search/:query" element={<SearchResult />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path="*" element={<Missing />} />
           </Routes>
         </div>
