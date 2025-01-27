@@ -16,11 +16,11 @@ const Profile = () => {
 
   return (
     <div className='dark:bg-black w-full h-full flex justify-center dark:text-white'>
-        <div className='xl:w-1/2 p-2 '>
+        <div className='w-full md:w-3/4 lg:w-2/3 xl:w-2/3 p-2 '>
             <ul className='flex flex-col items-center gap-2'>
                 <li className='text-center w-full flex flex-col items-center'>
                     <img className='w-40 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2' src={img||icon} alt="" />
-                    <h1>{name || 'Your name'}</h1>
+                    <h1 className='text-3xl font-bold py-2'>{name || 'Your name'}</h1>
                     <h2>{email || 'Your Email'}</h2>
                 </li>
                 <li className='p-2 border w-2/3 rounded'>
