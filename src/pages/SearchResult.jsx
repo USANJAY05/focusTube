@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import DesktopThumnail from '../components/main/DesktopThumnail';
+import useMobileSize from '../hooks/useMobileSize';
+import Thumnail from '../components/main/Thumnail';
 
 const SearchResult = () => {
   const { query } = useParams();
   const [items, setItems] = useState([]);
+  const mobSize = useMobileSize()
 
   const searchVideos = async (query) => {
     try {
@@ -65,6 +68,7 @@ const SearchResult = () => {
 
                 {isVideo && (
                   <div className="w-full">
+                    {!mobSize ?
                     <DesktopThumnail
                       channelId={snippet.channelId}
                       channel={snippet.channelTitle}
@@ -72,7 +76,15 @@ const SearchResult = () => {
                       id={item.id.videoId}
                       title={snippet.title}
                       date={snippet.publishedAt}
-                    />
+                    />:
+                    <Thumnail
+                      channelId={snippet.channelId}
+                      channel={snippet.channelTitle}
+                      thumnail={snippet.thumbnails.medium.url}
+                      id={item.id.videoId}
+                      title={snippet.title}
+                      date={snippet.publishedAt}
+                    /> }
                   </div>
                 )}
               </section>
