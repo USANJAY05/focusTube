@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const VideoDetails = ({videoData,channelData}) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 mb-4">
     <h1 className="text-xl font-bold">{videoData.snippet.title}</h1>
     <p>{count(videoData.statistics.viewCount)} Views &bull; {moment(videoData.snippet.publishedAt).fromNow()}</p>
     <div className="flex flex-col gap-2 lg:flex-row sm:flex-row md:flex-row xl:flex-row justify-between">
@@ -34,16 +34,19 @@ const VideoDetails = ({videoData,channelData}) => {
         </button>
       </div>
       <div className="flex gap-3">
-        <button className="px-3  py-1 rounded-3xl flex gap-2 items-center bg-gray-100 hover:bg-gray-200 dark:bg-gray-800" aria-label="Like">
+        <button className=" rounded-3xl bg-gray-100 dark:bg-gray-800 flex items-center" aria-label="Like">
+          <div className='hover:bg-gray-200 dark:hover:bg-gray-700 rounded-r rounded-full w-full h-full flex border-r border-slate-200 px-5 items-center'>
         <AiOutlineLike className='h-6 w-6' />
          {count(videoData.statistics.likeCount)}
-         <div className='border-r border-red-500'></div>
-        <AiOutlineDislike className='h-6 w-6' />
+          </div>
+          <div className='hover:bg-gray-200 dark:hover:bg-gray-700  rounded-l rounded-full w-full h-full flex px-3  items-center'>
+          <AiOutlineDislike className='h-6 w-6' />
+        </div>
         </button>
-        <button className="px-3 py-1 rounded-3xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Share">
+        <button className="px-3 py-1 rounded-3xl dark:hover:bg-gray-700 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Share">
         <PiShareFat className='w-5 h-5' />Share
         </button>
-        <button className="px-3 py-1 rounded-3xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Save">
+        <button className="px-3 py-1 rounded-3xl dark:hover:bg-gray-700 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 flex gap-2 items-center" aria-label="Save">
         <GoBookmark className='w-5 h-5' /> Save
         </button>
       </div>
