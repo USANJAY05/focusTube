@@ -104,8 +104,8 @@ const Video = () => {
         {/* Video Title and Channel Info */}
         <VideoDetails videoData={videoData} channelData={channelData} />
         {/* Video Description */}
-        <div>
-          <p className="bg-gray-100 dark:bg-gray-800 p-1 overflow-auto rounded-xl h-40">
+        <div className='p-5 bg-slate-800 overflow-auto rounded-lg  h-40 m-2'>
+          <p className="bg-gray-100 dark:bg-gray-800">
             {videoData?.snippet?.description || 'No description available'}
           </p>
         </div>
